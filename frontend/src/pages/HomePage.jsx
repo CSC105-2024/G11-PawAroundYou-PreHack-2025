@@ -31,7 +31,7 @@ export default function HomePage() {
           </div>
 
           {/* Section 1 */}
-          <div className="flex flex-col md:flex-row mt-10 gap-10 items-center mt-20 mb-20">
+          <div className="flex flex-col md:flex-row gap-10 items-center mt-20 mb-20">
             <img
               src="./public/Hands together.png"
               alt="Hands together"
