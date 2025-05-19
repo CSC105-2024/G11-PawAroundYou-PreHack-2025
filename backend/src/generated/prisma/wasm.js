@@ -114,6 +114,9 @@ Prisma.NullTypes = {
  */
 
 exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
+  ReadUncommitted: 'ReadUncommitted',
+  ReadCommitted: 'ReadCommitted',
+  RepeatableRead: 'RepeatableRead',
   Serializable: 'Serializable'
 });
 
@@ -132,6 +135,7 @@ exports.Prisma.RequestScalarFieldEnum = {
   description: 'description',
   locationDistrict: 'locationDistrict',
   locationProvince: 'locationProvince',
+  createdAt: 'createdAt',
   status: 'status',
   userId: 'userId'
 };
@@ -139,6 +143,21 @@ exports.Prisma.RequestScalarFieldEnum = {
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.UserOrderByRelevanceFieldEnum = {
+  email: 'email',
+  password: 'password',
+  fName: 'fName',
+  sName: 'sName',
+  tel: 'tel'
+};
+
+exports.Prisma.RequestOrderByRelevanceFieldEnum = {
+  title: 'title',
+  description: 'description',
+  locationDistrict: 'locationDistrict',
+  locationProvince: 'locationProvince'
 };
 exports.Status = exports.$Enums.Status = {
   complete: 'complete',

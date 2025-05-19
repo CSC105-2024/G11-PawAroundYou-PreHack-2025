@@ -10,8 +10,9 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider          = "mysql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 model User {
@@ -30,11 +31,12 @@ enum Status {
 }
 
 model Request {
-  id               Int    @id @default(autoincrement())
+  id               Int      @id @default(autoincrement())
   title            String
   description      String
   locationDistrict String
   locationProvince String
+  createdAt        DateTime @default(now())
 
   status Status @default(incomplete)
 
