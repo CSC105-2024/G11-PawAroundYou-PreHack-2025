@@ -7,11 +7,16 @@ import HomePage from "./pages/HomePage.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
 import SignUpPage from './pages/SignUpPage';
 import LoginPage from './pages/LoginPage';
+import HomeLoggedIn from './pages/HomeLoggedIn';
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <HomePage />, 
+    },
+    {
+        path: "/home",
+        element: <HomeLoggedIn />, 
     },
     {
         path: "/profile",
