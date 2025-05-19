@@ -13,9 +13,9 @@ function Navbar() {
     };
 
     return (
-        <header className="flex justify-between items-center px-6 py-4 bg-[#FFECE2] text-[#89ACCE] border border-blue-400">
+        <header className="flex justify-between items-center px-6 py-4 bg-[#FFECE2] text-[#89ACCE] ">
             <div className="text-lg font-semibold flex items-center gap-2">
-                <span role="img" aria-label="wrench">🔧</span>
+                <img src="/Build.png" className="w-10 h-10" alt="Build Icon" />
                 Ma Help Kan
             </div>
 
