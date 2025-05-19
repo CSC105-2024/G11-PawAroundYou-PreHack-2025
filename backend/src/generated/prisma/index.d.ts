@@ -681,10 +681,6 @@ export namespace Prisma {
             args: Prisma.UserCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
-          createManyAndReturn: {
-            args: Prisma.UserCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
-          }
           delete: {
             args: Prisma.UserDeleteArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$UserPayload>
@@ -700,10 +696,6 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.UserUpdateManyArgs<ExtArgs>
             result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.UserUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
           }
           upsert: {
             args: Prisma.UserUpsertArgs<ExtArgs>
@@ -755,10 +747,6 @@ export namespace Prisma {
             args: Prisma.RequestCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
-          createManyAndReturn: {
-            args: Prisma.RequestCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$RequestPayload>[]
-          }
           delete: {
             args: Prisma.RequestDeleteArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$RequestPayload>
@@ -774,10 +762,6 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.RequestUpdateManyArgs<ExtArgs>
             result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.RequestUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$RequestPayload>[]
           }
           upsert: {
             args: Prisma.RequestUpsertArgs<ExtArgs>
@@ -1217,23 +1201,7 @@ export namespace Prisma {
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
-  export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    email?: boolean
-    password?: boolean
-    fName?: boolean
-    sName?: boolean
-    tel?: boolean
-  }, ExtArgs["result"]["user"]>
 
-  export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    email?: boolean
-    password?: boolean
-    fName?: boolean
-    sName?: boolean
-    tel?: boolean
-  }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
     id?: boolean
@@ -1249,8 +1217,6 @@ export namespace Prisma {
     Request?: boolean | User$RequestArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
@@ -1382,30 +1348,6 @@ export namespace Prisma {
     createMany<T extends UserCreateManyArgs>(args?: SelectSubset<T, UserCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Users and returns the data saved in the database.
-     * @param {UserCreateManyAndReturnArgs} args - Arguments to create many Users.
-     * @example
-     * // Create many Users
-     * const user = await prisma.user.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Users and only return the `id`
-     * const userWithIdOnly = await prisma.user.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends UserCreateManyAndReturnArgs>(args?: SelectSubset<T, UserCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
      * Delete a User.
      * @param {UserDeleteArgs} args - Arguments to delete one User.
      * @example
@@ -1468,36 +1410,6 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends UserUpdateManyArgs>(args: SelectSubset<T, UserUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Users and returns the data updated in the database.
-     * @param {UserUpdateManyAndReturnArgs} args - Arguments to update many Users.
-     * @example
-     * // Update many Users
-     * const user = await prisma.user.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Users and only return the `id`
-     * const userWithIdOnly = await prisma.user.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends UserUpdateManyAndReturnArgs>(args: SelectSubset<T, UserUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one User.
@@ -1923,24 +1835,7 @@ export namespace Prisma {
      * The data used to create many Users.
      */
     data: UserCreateManyInput | UserCreateManyInput[]
-  }
-
-  /**
-   * User createManyAndReturn
-   */
-  export type UserCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
-    /**
-     * The data used to create many Users.
-     */
-    data: UserCreateManyInput | UserCreateManyInput[]
+    skipDuplicates?: boolean
   }
 
   /**
@@ -1973,32 +1868,6 @@ export namespace Prisma {
    * User updateMany
    */
   export type UserUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Users.
-     */
-    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyInput>
-    /**
-     * Filter which Users to update
-     */
-    where?: UserWhereInput
-    /**
-     * Limit how many Users to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * User updateManyAndReturn
-   */
-  export type UserUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the User
-     */
-    omit?: UserOmit<ExtArgs> | null
     /**
      * The data used to update Users.
      */
@@ -2150,6 +2019,7 @@ export namespace Prisma {
     description: string | null
     locationDistrict: string | null
     locationProvince: string | null
+    createdAt: Date | null
     status: $Enums.Status | null
     userId: number | null
   }
@@ -2160,6 +2030,7 @@ export namespace Prisma {
     description: string | null
     locationDistrict: string | null
     locationProvince: string | null
+    createdAt: Date | null
     status: $Enums.Status | null
     userId: number | null
   }
@@ -2170,6 +2041,7 @@ export namespace Prisma {
     description: number
     locationDistrict: number
     locationProvince: number
+    createdAt: number
     status: number
     userId: number
     _all: number
@@ -2192,6 +2064,7 @@ export namespace Prisma {
     description?: true
     locationDistrict?: true
     locationProvince?: true
+    createdAt?: true
     status?: true
     userId?: true
   }
@@ -2202,6 +2075,7 @@ export namespace Prisma {
     description?: true
     locationDistrict?: true
     locationProvince?: true
+    createdAt?: true
     status?: true
     userId?: true
   }
@@ -2212,6 +2086,7 @@ export namespace Prisma {
     description?: true
     locationDistrict?: true
     locationProvince?: true
+    createdAt?: true
     status?: true
     userId?: true
     _all?: true
@@ -2309,6 +2184,7 @@ export namespace Prisma {
     description: string
     locationDistrict: string
     locationProvince: string
+    createdAt: Date
     status: $Enums.Status
     userId: number
     _count: RequestCountAggregateOutputType | null
@@ -2338,32 +2214,13 @@ export namespace Prisma {
     description?: boolean
     locationDistrict?: boolean
     locationProvince?: boolean
+    createdAt?: boolean
     status?: boolean
     userId?: boolean
     User?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["request"]>
 
-  export type RequestSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    title?: boolean
-    description?: boolean
-    locationDistrict?: boolean
-    locationProvince?: boolean
-    status?: boolean
-    userId?: boolean
-    User?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["request"]>
 
-  export type RequestSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    title?: boolean
-    description?: boolean
-    locationDistrict?: boolean
-    locationProvince?: boolean
-    status?: boolean
-    userId?: boolean
-    User?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["request"]>
 
   export type RequestSelectScalar = {
     id?: boolean
@@ -2371,18 +2228,13 @@ export namespace Prisma {
     description?: boolean
     locationDistrict?: boolean
     locationProvince?: boolean
+    createdAt?: boolean
     status?: boolean
     userId?: boolean
   }
 
-  export type RequestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "locationDistrict" | "locationProvince" | "status" | "userId", ExtArgs["result"]["request"]>
+  export type RequestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "locationDistrict" | "locationProvince" | "createdAt" | "status" | "userId", ExtArgs["result"]["request"]>
   export type RequestInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    User?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type RequestIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    User?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type RequestIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     User?: boolean | UserDefaultArgs<ExtArgs>
   }
 
@@ -2397,6 +2249,7 @@ export namespace Prisma {
       description: string
       locationDistrict: string
       locationProvince: string
+      createdAt: Date
       status: $Enums.Status
       userId: number
     }, ExtArgs["result"]["request"]>
@@ -2517,30 +2370,6 @@ export namespace Prisma {
     createMany<T extends RequestCreateManyArgs>(args?: SelectSubset<T, RequestCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Requests and returns the data saved in the database.
-     * @param {RequestCreateManyAndReturnArgs} args - Arguments to create many Requests.
-     * @example
-     * // Create many Requests
-     * const request = await prisma.request.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Requests and only return the `id`
-     * const requestWithIdOnly = await prisma.request.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends RequestCreateManyAndReturnArgs>(args?: SelectSubset<T, RequestCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RequestPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
      * Delete a Request.
      * @param {RequestDeleteArgs} args - Arguments to delete one Request.
      * @example
@@ -2603,36 +2432,6 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends RequestUpdateManyArgs>(args: SelectSubset<T, RequestUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Requests and returns the data updated in the database.
-     * @param {RequestUpdateManyAndReturnArgs} args - Arguments to update many Requests.
-     * @example
-     * // Update many Requests
-     * const request = await prisma.request.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Requests and only return the `id`
-     * const requestWithIdOnly = await prisma.request.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends RequestUpdateManyAndReturnArgs>(args: SelectSubset<T, RequestUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RequestPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one Request.
@@ -2828,6 +2627,7 @@ export namespace Prisma {
     readonly description: FieldRef<"Request", 'String'>
     readonly locationDistrict: FieldRef<"Request", 'String'>
     readonly locationProvince: FieldRef<"Request", 'String'>
+    readonly createdAt: FieldRef<"Request", 'DateTime'>
     readonly status: FieldRef<"Request", 'Status'>
     readonly userId: FieldRef<"Request", 'Int'>
   }
@@ -3059,28 +2859,7 @@ export namespace Prisma {
      * The data used to create many Requests.
      */
     data: RequestCreateManyInput | RequestCreateManyInput[]
-  }
-
-  /**
-   * Request createManyAndReturn
-   */
-  export type RequestCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Request
-     */
-    select?: RequestSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Request
-     */
-    omit?: RequestOmit<ExtArgs> | null
-    /**
-     * The data used to create many Requests.
-     */
-    data: RequestCreateManyInput | RequestCreateManyInput[]
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: RequestIncludeCreateManyAndReturn<ExtArgs> | null
+    skipDuplicates?: boolean
   }
 
   /**
@@ -3125,36 +2904,6 @@ export namespace Prisma {
      * Limit how many Requests to update.
      */
     limit?: number
-  }
-
-  /**
-   * Request updateManyAndReturn
-   */
-  export type RequestUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Request
-     */
-    select?: RequestSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Request
-     */
-    omit?: RequestOmit<ExtArgs> | null
-    /**
-     * The data used to update Requests.
-     */
-    data: XOR<RequestUpdateManyMutationInput, RequestUncheckedUpdateManyInput>
-    /**
-     * Filter which Requests to update
-     */
-    where?: RequestWhereInput
-    /**
-     * Limit how many Requests to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: RequestIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -3247,6 +2996,9 @@ export namespace Prisma {
    */
 
   export const TransactionIsolationLevel: {
+    ReadUncommitted: 'ReadUncommitted',
+    ReadCommitted: 'ReadCommitted',
+    RepeatableRead: 'RepeatableRead',
     Serializable: 'Serializable'
   };
 
@@ -3271,6 +3023,7 @@ export namespace Prisma {
     description: 'description',
     locationDistrict: 'locationDistrict',
     locationProvince: 'locationProvince',
+    createdAt: 'createdAt',
     status: 'status',
     userId: 'userId'
   };
@@ -3284,6 +3037,27 @@ export namespace Prisma {
   };
 
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+  export const UserOrderByRelevanceFieldEnum: {
+    email: 'email',
+    password: 'password',
+    fName: 'fName',
+    sName: 'sName',
+    tel: 'tel'
+  };
+
+  export type UserOrderByRelevanceFieldEnum = (typeof UserOrderByRelevanceFieldEnum)[keyof typeof UserOrderByRelevanceFieldEnum]
+
+
+  export const RequestOrderByRelevanceFieldEnum: {
+    title: 'title',
+    description: 'description',
+    locationDistrict: 'locationDistrict',
+    locationProvince: 'locationProvince'
+  };
+
+  export type RequestOrderByRelevanceFieldEnum = (typeof RequestOrderByRelevanceFieldEnum)[keyof typeof RequestOrderByRelevanceFieldEnum]
 
 
   /**
@@ -3302,6 +3076,13 @@ export namespace Prisma {
    * Reference to a field of type 'String'
    */
   export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
     
 
 
@@ -3343,6 +3124,7 @@ export namespace Prisma {
     sName?: SortOrder
     tel?: SortOrder
     Request?: RequestOrderByRelationAggregateInput
+    _relevance?: UserOrderByRelevanceInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -3393,6 +3175,7 @@ export namespace Prisma {
     description?: StringFilter<"Request"> | string
     locationDistrict?: StringFilter<"Request"> | string
     locationProvince?: StringFilter<"Request"> | string
+    createdAt?: DateTimeFilter<"Request"> | Date | string
     status?: EnumStatusFilter<"Request"> | $Enums.Status
     userId?: IntFilter<"Request"> | number
     User?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -3404,9 +3187,11 @@ export namespace Prisma {
     description?: SortOrder
     locationDistrict?: SortOrder
     locationProvince?: SortOrder
+    createdAt?: SortOrder
     status?: SortOrder
     userId?: SortOrder
     User?: UserOrderByWithRelationInput
+    _relevance?: RequestOrderByRelevanceInput
   }
 
   export type RequestWhereUniqueInput = Prisma.AtLeast<{
@@ -3418,6 +3203,7 @@ export namespace Prisma {
     description?: StringFilter<"Request"> | string
     locationDistrict?: StringFilter<"Request"> | string
     locationProvince?: StringFilter<"Request"> | string
+    createdAt?: DateTimeFilter<"Request"> | Date | string
     status?: EnumStatusFilter<"Request"> | $Enums.Status
     userId?: IntFilter<"Request"> | number
     User?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -3429,6 +3215,7 @@ export namespace Prisma {
     description?: SortOrder
     locationDistrict?: SortOrder
     locationProvince?: SortOrder
+    createdAt?: SortOrder
     status?: SortOrder
     userId?: SortOrder
     _count?: RequestCountOrderByAggregateInput
@@ -3447,6 +3234,7 @@ export namespace Prisma {
     description?: StringWithAggregatesFilter<"Request"> | string
     locationDistrict?: StringWithAggregatesFilter<"Request"> | string
     locationProvince?: StringWithAggregatesFilter<"Request"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Request"> | Date | string
     status?: EnumStatusWithAggregatesFilter<"Request"> | $Enums.Status
     userId?: IntWithAggregatesFilter<"Request"> | number
   }
@@ -3520,6 +3308,7 @@ export namespace Prisma {
     description: string
     locationDistrict: string
     locationProvince: string
+    createdAt?: Date | string
     status?: $Enums.Status
     User: UserCreateNestedOneWithoutRequestInput
   }
@@ -3530,6 +3319,7 @@ export namespace Prisma {
     description: string
     locationDistrict: string
     locationProvince: string
+    createdAt?: Date | string
     status?: $Enums.Status
     userId: number
   }
@@ -3539,6 +3329,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     locationDistrict?: StringFieldUpdateOperationsInput | string
     locationProvince?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     User?: UserUpdateOneRequiredWithoutRequestNestedInput
   }
@@ -3549,6 +3340,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     locationDistrict?: StringFieldUpdateOperationsInput | string
     locationProvince?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     userId?: IntFieldUpdateOperationsInput | number
   }
@@ -3559,6 +3351,7 @@ export namespace Prisma {
     description: string
     locationDistrict: string
     locationProvince: string
+    createdAt?: Date | string
     status?: $Enums.Status
     userId: number
   }
@@ -3568,6 +3361,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     locationDistrict?: StringFieldUpdateOperationsInput | string
     locationProvince?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
   }
 
@@ -3577,6 +3371,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     locationDistrict?: StringFieldUpdateOperationsInput | string
     locationProvince?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     userId?: IntFieldUpdateOperationsInput | number
   }
@@ -3603,6 +3398,7 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
@@ -3614,6 +3410,12 @@ export namespace Prisma {
 
   export type RequestOrderByRelationAggregateInput = {
     _count?: SortOrder
+  }
+
+  export type UserOrderByRelevanceInput = {
+    fields: UserOrderByRelevanceFieldEnum | UserOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
   }
 
   export type UserCountOrderByAggregateInput = {
@@ -3678,10 +3480,22 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
     not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type EnumStatusFilter<$PrismaModel = never> = {
@@ -3696,12 +3510,19 @@ export namespace Prisma {
     isNot?: UserWhereInput
   }
 
+  export type RequestOrderByRelevanceInput = {
+    fields: RequestOrderByRelevanceFieldEnum | RequestOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
   export type RequestCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
     locationDistrict?: SortOrder
     locationProvince?: SortOrder
+    createdAt?: SortOrder
     status?: SortOrder
     userId?: SortOrder
   }
@@ -3717,6 +3538,7 @@ export namespace Prisma {
     description?: SortOrder
     locationDistrict?: SortOrder
     locationProvince?: SortOrder
+    createdAt?: SortOrder
     status?: SortOrder
     userId?: SortOrder
   }
@@ -3727,6 +3549,7 @@ export namespace Prisma {
     description?: SortOrder
     locationDistrict?: SortOrder
     locationProvince?: SortOrder
+    createdAt?: SortOrder
     status?: SortOrder
     userId?: SortOrder
   }
@@ -3734,6 +3557,20 @@ export namespace Prisma {
   export type RequestSumOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type EnumStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -3806,6 +3643,10 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
   export type EnumStatusFieldUpdateOperationsInput = {
     set?: $Enums.Status
   }
@@ -3840,6 +3681,7 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
@@ -3881,10 +3723,22 @@ export namespace Prisma {
     contains?: string | StringFieldRefInput<$PrismaModel>
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
     not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type NestedEnumStatusFilter<$PrismaModel = never> = {
@@ -3892,6 +3746,20 @@ export namespace Prisma {
     in?: $Enums.Status[]
     notIn?: $Enums.Status[]
     not?: NestedEnumStatusFilter<$PrismaModel> | $Enums.Status
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type NestedEnumStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -3909,6 +3777,7 @@ export namespace Prisma {
     description: string
     locationDistrict: string
     locationProvince: string
+    createdAt?: Date | string
     status?: $Enums.Status
   }
 
@@ -3918,6 +3787,7 @@ export namespace Prisma {
     description: string
     locationDistrict: string
     locationProvince: string
+    createdAt?: Date | string
     status?: $Enums.Status
   }
 
@@ -3928,6 +3798,7 @@ export namespace Prisma {
 
   export type RequestCreateManyUserInputEnvelope = {
     data: RequestCreateManyUserInput | RequestCreateManyUserInput[]
+    skipDuplicates?: boolean
   }
 
   export type RequestUpsertWithWhereUniqueWithoutUserInput = {
@@ -3955,6 +3826,7 @@ export namespace Prisma {
     description?: StringFilter<"Request"> | string
     locationDistrict?: StringFilter<"Request"> | string
     locationProvince?: StringFilter<"Request"> | string
+    createdAt?: DateTimeFilter<"Request"> | Date | string
     status?: EnumStatusFilter<"Request"> | $Enums.Status
     userId?: IntFilter<"Request"> | number
   }
@@ -4015,6 +3887,7 @@ export namespace Prisma {
     description: string
     locationDistrict: string
     locationProvince: string
+    createdAt?: Date | string
     status?: $Enums.Status
   }
 
@@ -4023,6 +3896,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     locationDistrict?: StringFieldUpdateOperationsInput | string
     locationProvince?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
   }
 
@@ -4032,6 +3906,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     locationDistrict?: StringFieldUpdateOperationsInput | string
     locationProvince?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
   }
 
@@ -4041,6 +3916,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     locationDistrict?: StringFieldUpdateOperationsInput | string
     locationProvince?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
   }
 

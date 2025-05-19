@@ -62,14 +62,27 @@ export const getRequest = async (id: number) => {
 };
 
 export const getAllRequest = async () => {
-  const requestForm = db.request.findMany({});
+  const tenDaysAgo = new Date();
+  tenDaysAgo.setDate(tenDaysAgo.getDate() - 10);
+  const requestForm = db.request.findMany({
+    where: {
+      createdAt: {
+        gte: tenDaysAgo,
+      },
+    },
+  });
   return requestForm;
 };
 
 export const getAllRequestFromUser = async (userId: number) => {
+  const tenDaysAgo = new Date();
+  tenDaysAgo.setDate(tenDaysAgo.getDate() - 10);
   const requestForm = db.request.findMany({
     where: {
       userId,
+      createdAt: {
+        gte: tenDaysAgo,
+      },
     },
   });
   return requestForm;
