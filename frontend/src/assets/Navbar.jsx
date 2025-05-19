@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -35,7 +37,7 @@ function Navbar() {
             onClick={handleLogout}
             className="bg-[#89ACCE] text-white px-4 text-xl py-2 rounded-md hover:bg-[#7295b8] transition"
           >
-            Logout
+            <Link to="/">Logout</Link>
           </button>
         </>
       ) : (
@@ -43,7 +45,7 @@ function Navbar() {
           onClick={handleLogout}
           className="bg-[#89ACCE] text-white text-xl px-4 py-2 rounded-md hover:bg-[#7295b8] transition"
         >
-          Sign Up
+          <Link to="/signup">Sign Up</Link>
         </button>
       )}
     </header>
