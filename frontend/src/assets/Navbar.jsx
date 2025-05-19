@@ -23,10 +23,10 @@ function Navbar() {
         Ma Help Kan
       </div>
 
-      {isLoggedIn ? (
+      {!isLoggedIn ? (
         <>
           <nav className="flex gap-12 text-xl font-medium">
-            <a href="/" className="hover:underline">
+            <a href="/home" className="hover:underline">
               Home
             </a>
             <a href="/profile" className="hover:underline">
