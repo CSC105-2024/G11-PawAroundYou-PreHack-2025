@@ -21,7 +21,7 @@ function Navbar() {
         Ma Help Kan
       </div>
 
-      {!isLoggedIn ? (
+      {isLoggedIn ? (
         <>
           <nav className="flex gap-12 text-xl font-medium">
             <a href="/" className="hover:underline">
