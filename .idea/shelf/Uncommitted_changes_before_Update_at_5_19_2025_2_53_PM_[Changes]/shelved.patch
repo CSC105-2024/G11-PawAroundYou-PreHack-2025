@@ -1,0 +1,255 @@
+Index: frontend/src/main.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { StrictMode } from \"react\";\r\nimport { createRoot } from \"react-dom/client\";\r\nimport { createBrowserRouter, RouterProvider } from \"react-router-dom\";\r\nimport \"./index.css\";\r\nimport App from \"./App.jsx\";\r\n\r\nimport HomePage from \"./pages/HomePage.jsx\";\r\nimport ProfilePage from \"./pages/ProfilePage.jsx\";\r\n\r\nconst router = createBrowserRouter([\r\n    {\r\n        path: \"/\", // Home route\r\n        element: <App />, // Render the App component\r\n    },\r\n    {\r\n        path: \"/home\", // Home route\r\n        element: <HomePage />, // Render the App component\r\n    },\r\n    {\r\n        path: \"/profile\",\r\n        element: <ProfilePage />, // Render the App component\r\n    },\r\n]);\r\n\r\ncreateRoot(document.getElementById('root')).render(\r\n  <StrictMode>\r\n      <RouterProvider router={router} />\r\n  </StrictMode>,\r\n)\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/frontend/src/main.jsx b/frontend/src/main.jsx
+--- a/frontend/src/main.jsx	(revision 1523ea2d77d812873c45068d1a33ebccfb5ebdff)
++++ b/frontend/src/main.jsx	(date 1747631587425)
+@@ -6,17 +6,27 @@
+ 
+ import HomePage from "./pages/HomePage.jsx";
+ import ProfilePage from "./pages/ProfilePage.jsx";
++import SignUpPage from "./pages/SignUpPage.jsx";
++import LoginPage from "./pages/LoginPage.jsx";
+ 
+ const router = createBrowserRouter([
+     {
+         path: "/", // Home route
+-        element: <App />, // Render the App component
++        element: <HomePage />, // Render the App component
+     },
+     {
+         path: "/home", // Home route
+         element: <HomePage />, // Render the App component
+     },
+     {
++        path: "/signup",
++        element: <SignUpPage />, // Render the App component
++    },
++    {
++        path: "/login",
++        element: <LoginPage />, // Render the App component
++    },
++    {
+         path: "/profile",
+         element: <ProfilePage />, // Render the App component
+     },
+Index: frontend/src/pages/HomePage.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React, { useState } from \"react\";\r\nimport {Link} from \"react-router-dom\";\r\n\r\nexport default function HomePage() {\r\n    return (\r\n\r\n        <div className=\"min-h-screen bg-[#FFECE2] text-[#89ACCE] font-['Poppins']\">\r\n\r\n            <main className=\"px-6 py-16 max-w-5xl mx-auto\">\r\n                <h1 className=\"text-4xl md:text-5xl font-bold text-center mb-12 leading-snug\">\r\n                    Start your journey of support<br className=\"hidden md:block\" /> and care\r\n                </h1>\r\n\r\n                {/* Desktop: รูปบน - ปุ่มอยู่ด้านล่าง | Mobile: ปุ่มล่างสุด */}\r\n                <img\r\n                    src=\"./public/Teamwork.png\"\r\n                    alt=\"Teamwork\"\r\n                    className=\"rounded-xl w-full mb-5 shadow\"\r\n                />\r\n\r\n                {/* ปุ่ม Join the Community (เฉพาะ Desktop อยู่ตรงนี้) */}\r\n                <div className=\"hidden md:block text-center mb-10\">\r\n                    <Link\r\n                        to=\"/signup\"\r\n                        className=\"bg-[#89ACCE] text-white px-6 py-3 rounded-sm font-medium shadow-md hover:bg-[#6e95bb]\"\r\n                    >\r\n                        Join the Community\r\n                    </Link>\r\n                </div>\r\n\r\n                {/* Section 1 */}\r\n                <div className=\"flex flex-col md:flex-row mt-10 gap-10 items-center mt-20 mb-20\">\r\n                    <img\r\n                        src=\"./public/Hands together.png\"\r\n                        alt=\"Hands together\"\r\n                        className=\"rounded-xl w-full md:w-1/2 shadow\"\r\n                    />\r\n                    <p className=\"text-lg md:w-1/2 leading-relaxed\">\r\n                        We believe no one should face challenges alone.\r\n                        Our community is built on support, where people come together to offer help,\r\n                        share advice, and solve real-life problems — together.\r\n                    </p>\r\n                </div>\r\n\r\n                {/* Section 2 */}\r\n                <div className=\"flex flex-col md:flex-row-reverse items-center gap-10 mb-20\">\r\n                    <img\r\n                        src=\"./public/Teammeet.png\"\r\n                        alt=\"Teammeet\"\r\n                        className=\"rounded-xl w-full md:w-1/2 shadow\"\r\n                    />\r\n                    <p className=\"text-lg md:w-1/2 leading-relaxed text-left\">\r\n                        Here, people come together to ask for help, offer support, and share kindness.\r\n                        Whether you need a hand or want to lend one — this space is for you.\r\n                    </p>\r\n                </div>\r\n\r\n                {/* ปุ่ม Join the Community (เฉพาะ Mobile อยู่ล่างสุด) */}\r\n                <div className=\"md:hidden text-center mt-10\">\r\n                    <Link\r\n                        to=\"/signup\"\r\n                        className=\"bg-[#89ACCE] text-white px-6 py-3 rounded-sm font-medium shadow-md hover:bg-[#6e95bb]\"\r\n                    >\r\n                        Join the Community\r\n                    </Link>\r\n                </div>\r\n            </main>\r\n        </div>\r\n\r\n    );\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/frontend/src/pages/HomePage.jsx b/frontend/src/pages/HomePage.jsx
+--- a/frontend/src/pages/HomePage.jsx	(revision 1523ea2d77d812873c45068d1a33ebccfb5ebdff)
++++ b/frontend/src/pages/HomePage.jsx	(date 1747631415360)
+@@ -1,71 +1,74 @@
+-import React, { useState } from "react";
++import React from "react";
+ import {Link} from "react-router-dom";
++import Navbar from "../assets/Navbar.jsx";
+ 
+ export default function HomePage() {
+     return (
+-
+-        <div className="min-h-screen bg-[#FFECE2] text-[#89ACCE] font-['Poppins']">
++        <>
++            <div>
++                <Navbar/>
++            </div>
++            <div className="min-h-screen bg-[#FFECE2] text-[#89ACCE] font-['Poppins']">
+ 
+-            <main className="px-6 py-16 max-w-5xl mx-auto">
+-                <h1 className="text-4xl md:text-5xl font-bold text-center mb-12 leading-snug">
+-                    Start your journey of support<br className="hidden md:block" /> and care
+-                </h1>
++                <main className="px-6 py-16 max-w-5xl mx-auto">
++                    <h1 className="text-4xl md:text-5xl font-bold text-center mb-12 leading-snug">
++                        Start your journey of support<br className="hidden md:block"/> and care
++                    </h1>
+ 
+-                {/* Desktop: รูปบน - ปุ่มอยู่ด้านล่าง | Mobile: ปุ่มล่างสุด */}
+-                <img
+-                    src="./public/Teamwork.png"
+-                    alt="Teamwork"
+-                    className="rounded-xl w-full mb-5 shadow"
+-                />
++                    <img
++                        src="./public/Teamwork.png"
++                        alt="Teamwork"
++                        className="rounded-xl w-full mb-5 shadow"
++                    />
+ 
+-                {/* ปุ่ม Join the Community (เฉพาะ Desktop อยู่ตรงนี้) */}
+-                <div className="hidden md:block text-center mb-10">
+-                    <Link
+-                        to="/signup"
+-                        className="bg-[#89ACCE] text-white px-6 py-3 rounded-sm font-medium shadow-md hover:bg-[#6e95bb]"
+-                    >
+-                        Join the Community
+-                    </Link>
+-                </div>
++                    <div className="hidden md:block text-center mb-10">
++                        <button>
++                            <Link
++                                to="/signup"
++                                className="bg-[#89ACCE] text-white px-6 py-3 rounded-sm font-medium shadow-md hover:bg-[#6e95bb]"
++                            >
++                                Join the Community
++                            </Link>
++                        </button>
++                    </div>
+ 
+-                {/* Section 1 */}
+-                <div className="flex flex-col md:flex-row mt-10 gap-10 items-center mt-20 mb-20">
+-                    <img
+-                        src="./public/Hands together.png"
+-                        alt="Hands together"
+-                        className="rounded-xl w-full md:w-1/2 shadow"
+-                    />
+-                    <p className="text-lg md:w-1/2 leading-relaxed">
+-                        We believe no one should face challenges alone.
+-                        Our community is built on support, where people come together to offer help,
+-                        share advice, and solve real-life problems — together.
+-                    </p>
+-                </div>
++                    <div className="flex flex-col md:flex-row mt-10 gap-10 items-center mt-20 mb-20">
++                        <img
++                            src="./public/Hands together.png"
++                            alt="Hands together"
++                            className="rounded-xl w-full md:w-1/2 shadow"
++                        />
++                        <p className="text-lg md:w-1/2 leading-relaxed">
++                            We believe no one should face challenges alone.
++                            Our community is built on support, where people come together to offer help,
++                            share advice, and solve real-life problems — together.
++                        </p>
++                    </div>
+ 
+-                {/* Section 2 */}
+-                <div className="flex flex-col md:flex-row-reverse items-center gap-10 mb-20">
+-                    <img
+-                        src="./public/Teammeet.png"
+-                        alt="Teammeet"
+-                        className="rounded-xl w-full md:w-1/2 shadow"
+-                    />
+-                    <p className="text-lg md:w-1/2 leading-relaxed text-left">
+-                        Here, people come together to ask for help, offer support, and share kindness.
+-                        Whether you need a hand or want to lend one — this space is for you.
+-                    </p>
+-                </div>
++                    <div className="flex flex-col md:flex-row-reverse items-center gap-10 mb-20">
++                        <img
++                            src="./public/Teammeet.png"
++                            alt="Teammeet"
++                            className="rounded-xl w-full md:w-1/2 shadow"
++                        />
++                        <p className="text-lg md:w-1/2 leading-relaxed text-left">
++                            Here, people come together to ask for help, offer support, and share kindness.
++                            Whether you need a hand or want to lend one — this space is for you.
++                        </p>
++                    </div>
+ 
+-                {/* ปุ่ม Join the Community (เฉพาะ Mobile อยู่ล่างสุด) */}
+-                <div className="md:hidden text-center mt-10">
+-                    <Link
+-                        to="/signup"
+-                        className="bg-[#89ACCE] text-white px-6 py-3 rounded-sm font-medium shadow-md hover:bg-[#6e95bb]"
+-                    >
+-                        Join the Community
+-                    </Link>
+-                </div>
+-            </main>
+-        </div>
+-
++                    <div className="md:hidden text-center mt-10">
++                        <button>
++                            <Link
++                                to="/signup"
++                                className="bg-[#89ACCE] text-white px-6 py-3 rounded-sm font-medium shadow-md hover:bg-[#6e95bb]"
++                            >
++                                Join the Community
++                            </Link>
++                        </button>
++                    </div>
++                </main>
++            </div>
++        </>
+     );
+ }
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"ea416692-cafb-4485-b383-b962838b4c4a\" name=\"Changes\" comment=\"for riewta frontend\">\r\n      <change afterPath=\"$PROJECT_DIR$/frontend/src/pages/LoginPage.jsx\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/frontend/src/pages/SignUpPage.jsx\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/frontend/src/main.jsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/frontend/src/main.jsx\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/frontend/src/pages/HomePage.jsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/frontend/src/pages/HomePage.jsx\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"JavaScript File\" />\r\n        <option value=\"JSX File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;xoxo-a&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubProjectSettings\">\r\n    <option name=\"branchProtectionPatterns\">\r\n      <list>\r\n        <option value=\"main\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/CSC105-2024/G11-PawAroundYou-PreHack-2025.git&quot;,\r\n    &quot;accountId&quot;: &quot;675695f6-a9a0-4b39-8ddd-926955dee5ff&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 7\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2xG8jS0QE7ZBEQPmxBEmptRucpx\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"ModuleVcsDetector.initialDetectionPerformed\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"RunOnceActivity.git.unshallow\": \"true\",\r\n    \"git-widget-placeholder\": \"homepage\",\r\n    \"ignore.virus.scanning.warn.message\": \"true\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"npm.dev.executor\": \"Run\",\r\n    \"ts.external.directory.path\": \"C:\\\\Users\\\\Nitro\\\\Desktop\\\\G11-PawAroundYou-PreHack-2025\\\\backend\\\\node_modules\\\\typescript\\\\lib\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\Nitro\\Desktop\\G11-PawAroundYou-PreHack-2025\\frontend\\public\" />\r\n      <recent name=\"C:\\Users\\Nitro\\Desktop\\G11-PawAroundYou-PreHack-2025\\frontend\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"dev\" type=\"js.build_tools.npm\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <package-json value=\"$PROJECT_DIR$/frontend/package.json\" />\r\n      <command value=\"run\" />\r\n      <scripts>\r\n        <script value=\"dev\" />\r\n      </scripts>\r\n      <node-interpreter value=\"project\" />\r\n      <envs />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"npm.dev\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-WS-251.25410.117\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"ea416692-cafb-4485-b383-b962838b4c4a\" name=\"Changes\" comment=\"\" />\r\n      <created>1747553184550</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1747553184550</updated>\r\n      <workItem from=\"1747553185689\" duration=\"54000\" />\r\n      <workItem from=\"1747555948696\" duration=\"180000\" />\r\n      <workItem from=\"1747556142840\" duration=\"259000\" />\r\n      <workItem from=\"1747556422440\" duration=\"55000\" />\r\n      <workItem from=\"1747556497412\" duration=\"342000\" />\r\n      <workItem from=\"1747557774020\" duration=\"511000\" />\r\n      <workItem from=\"1747558337979\" duration=\"42000\" />\r\n      <workItem from=\"1747561917878\" duration=\"127000\" />\r\n      <workItem from=\"1747562978914\" duration=\"265000\" />\r\n      <workItem from=\"1747577743385\" duration=\"423000\" />\r\n      <workItem from=\"1747578187985\" duration=\"40000\" />\r\n      <workItem from=\"1747578240768\" duration=\"183000\" />\r\n      <workItem from=\"1747578453547\" duration=\"4773000\" />\r\n      <workItem from=\"1747621732288\" duration=\"6458000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"create frontend\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1747557957846</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1747557957846</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"for riewta frontend\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1747624091810</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1747624091810</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"3\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"create frontend\" />\r\n    <MESSAGE value=\"for riewta frontend\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"for riewta frontend\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 1523ea2d77d812873c45068d1a33ebccfb5ebdff)
++++ b/.idea/workspace.xml	(date 1747641155051)
+@@ -5,9 +5,8 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="ea416692-cafb-4485-b383-b962838b4c4a" name="Changes" comment="for riewta frontend">
+-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/LoginPage.jsx" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/SignUpPage.jsx" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/frontend/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main.jsx" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/frontend/src/pages/HomePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/HomePage.jsx" afterDir="false" />
+     </list>
+@@ -54,23 +53,23 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "ModuleVcsDetector.initialDetectionPerformed": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "RunOnceActivity.git.unshallow": "true",
+-    "git-widget-placeholder": "homepage",
+-    "ignore.virus.scanning.warn.message": "true",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "npm.dev.executor": "Run",
+-    "ts.external.directory.path": "C:\\Users\\Nitro\\Desktop\\G11-PawAroundYou-PreHack-2025\\backend\\node_modules\\typescript\\lib",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;homepage&quot;,
++    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
++    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Nitro\\Desktop\\G11-PawAroundYou-PreHack-2025\\backend\\node_modules\\typescript\\lib&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="MoveFile.RECENT_KEYS">
+       <recent name="C:\Users\Nitro\Desktop\G11-PawAroundYou-PreHack-2025\frontend\public" />
+@@ -121,7 +120,8 @@
+       <workItem from="1747578187985" duration="40000" />
+       <workItem from="1747578240768" duration="183000" />
+       <workItem from="1747578453547" duration="4773000" />
+-      <workItem from="1747621732288" duration="6458000" />
++      <workItem from="1747621732288" duration="9451000" />
++      <workItem from="1747640847995" duration="302000" />
+     </task>
+     <task id="LOCAL-00001" summary="create frontend">
+       <option name="closed" value="true" />
