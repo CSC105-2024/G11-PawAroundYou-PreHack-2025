@@ -5,6 +5,7 @@ import "./index.css";
 import App from "./App.jsx";
 
 import HomePage from "./pages/HomePage.jsx";
+import ProfilePage from "./pages/ProfilePage.jsx";
 
 const router = createBrowserRouter([
     {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
     {
         path: "/home", // Home route
         element: <HomePage />, // Render the App component
+    },
+    {
+        path: "/profile",
+        element: <ProfilePage />, // Render the App component
     },
 ]);
 
