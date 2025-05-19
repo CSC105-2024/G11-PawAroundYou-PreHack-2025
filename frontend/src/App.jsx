@@ -1,12 +1,10 @@
-import React, { useRef } from 'react';
-import { Outlet } from "react-router-dom";
-import HomePage from "./pages/HomePage.jsx";
+import React from 'react';
+import Navbar from "./assets/Navbar.jsx";
 
 function App() {
     return (
         <>
-            <h1>Welcome to the Home Page!</h1>
-            <Outlet /> {/* Render nested routes here */}
+            <Navbar />
         </>
     );
 }

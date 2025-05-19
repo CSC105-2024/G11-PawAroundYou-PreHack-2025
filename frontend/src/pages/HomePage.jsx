@@ -58,11 +58,10 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* ปุ่ม Join the Community (เฉพาะ Mobile อยู่ล่างสุด) */}
           <div className="md:hidden text-center mt-10">
             <Link
               to="/signup"
-              className="bg-[#89ACCE] text-white px-6 py-3 rounded-sm font-medium shadow-md hover:bg-[#6e95bb]"
+              className="bg-[#89ACCE] text-white px-6 py-3 rounded-sm font-semibold shadow-md hover:bg-[#6e95bb]"
             >
               Join the Community
             </Link>
