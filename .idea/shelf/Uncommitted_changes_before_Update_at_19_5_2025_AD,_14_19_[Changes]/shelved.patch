@@ -1,0 +1,89 @@
+Index: frontend/src/assets/Navbar.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React, { useState, useEffect } from \"react\";\n\nfunction Navbar() {\n    const [isLoggedIn, setIsLoggedIn] = useState(true);\n\n    useEffect(() => {\n        console.log(\"Navbar component mounted\");\n    }, []);\n\n    const handleLogout = () => {\n        setIsLoggedIn(false);\n        console.log(\"User logged out\");\n    };\n\n    return (\n        <header className=\"flex justify-between items-center px-6 py-4 bg-[#FFECE2] text-[#89ACCE] \">\n            <div className=\"text-lg font-semibold flex items-center gap-2\">\n                <img src=\"/Build.png\" className=\"w-10 h-10\" alt=\"Build Icon\" />\n                Ma Help Kan\n            </div>\n\n            <nav className=\"flex gap-12 text-base font-medium\">\n                <a href=\"#\" className=\"hover:underline\">Home</a>\n                <a href=\"#\" className=\"hover:underline\">Profile</a>\n            </nav>\n\n            {isLoggedIn && (\n                <button\n                    onClick={handleLogout}\n                    className=\"bg-[#89ACCE] text-white px-4 py-2 rounded-md hover:bg-[#7295b8] transition\"\n                >\n                    Logout\n                </button>\n            )}\n        </header>\n    );\n}\n\nexport default Navbar;
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/frontend/src/assets/Navbar.jsx b/frontend/src/assets/Navbar.jsx
+--- a/frontend/src/assets/Navbar.jsx	(revision d299166cf0b9ad07dfef6e6075b5d4ee31a584bd)
++++ b/frontend/src/assets/Navbar.jsx	(date 1747638025349)
+@@ -29,7 +29,7 @@
+                     onClick={handleLogout}
+                     className="bg-[#89ACCE] text-white px-4 py-2 rounded-md hover:bg-[#7295b8] transition"
+                 >
+-                    Logout
++                    Log in
+                 </button>
+             )}
+         </header>
+Index: frontend/src/pages/ProfilePage.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from \"react\";\nimport Navbar from \"../assets/Navbar.jsx\";\n\n\nfunction ProfilePage() {\n    return (\n        <div className=\"min-h-screen bg-[#FFECE2] p-8\">\n            <Navbar />\n            <h1 className=\"text-2xl font-bold mb-2\">My post</h1>\n            <p className=\"text-[#f57c7c] mb-6\">Your post will be automatically deleted within 10 days.</p>\n\n            <div className=\"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6\">\n                {[...Array(9)].map((_, index) => (\n                    <div\n                        key={index}\n                        className={`relative bg-white rounded-lg shadow-sm p-4 border ${\n                            index === 3 ? 'border-blue-500 border-dashed' : ''\n                        }`}\n                    >\n                        {/* Status */}\n                        <span className=\"absolute top-2 right-2 bg-red-200 text-red-700 text-xs px-2 py-1 rounded-full\">\n                            Complete\n                        </span>\n\n                        {/* Title */}\n                        <h2 className=\"font-semibold mb-1\">How to repair pipes</h2>\n                        <p className=\"text-sm text-gray-600 mb-3\">My pipe broke at a curved corner</p>\n\n                        {/* Action Buttons */}\n                        <div className=\"flex gap-2 mt-auto\">\n                            <button className=\"text-blue-500 hover:text-blue-700\">\n                                <img src=\"/Edit.png\" className=\"w-6 h-6\" alt=\"Edit Icon\" />\n                            </button>\n                            <button className=\"text-blue-500 hover:text-blue-700 text-xl\">\n                                \uD83D\uDDD1\uFE0F\n                            </button>\n                        </div>\n                    </div>\n                ))}\n            </div>\n        </div>\n    );\n}\n\nexport default ProfilePage;
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/frontend/src/pages/ProfilePage.jsx b/frontend/src/pages/ProfilePage.jsx
+--- a/frontend/src/pages/ProfilePage.jsx	(revision d299166cf0b9ad07dfef6e6075b5d4ee31a584bd)
++++ b/frontend/src/pages/ProfilePage.jsx	(date 1747638904880)
+@@ -2,6 +2,7 @@
+ import Navbar from "../assets/Navbar.jsx";
+ 
+ 
++
+ function ProfilePage() {
+     return (
+         <div className="min-h-screen bg-[#FFECE2] p-8">
+@@ -26,13 +27,13 @@
+                         <h2 className="font-semibold mb-1">How to repair pipes</h2>
+                         <p className="text-sm text-gray-600 mb-3">My pipe broke at a curved corner</p>
+ 
+-                        {/* Action Buttons */}
++                        {/*button*/}
+                         <div className="flex gap-2 mt-auto">
+                             <button className="text-blue-500 hover:text-blue-700">
+                                 <img src="/Edit.png" className="w-6 h-6" alt="Edit Icon" />
+                             </button>
+                             <button className="text-blue-500 hover:text-blue-700 text-xl">
+-                                🗑️
++                                <img src="/Delete.png" className="w-6 h-6" alt="Delete Icon" />
+                             </button>
+                         </div>
+                     </div>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"ea416692-cafb-4485-b383-b962838b4c4a\" name=\"Changes\" comment=\"create frontend\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"JSX File\" />\n        <option value=\"JavaScript File\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitHubPullRequestSearchHistory\">{\n  &quot;lastFilter&quot;: {\n    &quot;state&quot;: &quot;OPEN&quot;,\n    &quot;assignee&quot;: &quot;xoxo-a&quot;\n  }\n}</component>\n  <component name=\"GithubProjectSettings\">\n    <option name=\"branchProtectionPatterns\">\n      <list>\n        <option value=\"main\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"GithubPullRequestsUISettings\">{\n  &quot;selectedUrlAndAccountId&quot;: {\n    &quot;url&quot;: &quot;https://github.com/CSC105-2024/G11-PawAroundYou-PreHack-2025.git&quot;,\n    &quot;accountId&quot;: &quot;675695f6-a9a0-4b39-8ddd-926955dee5ff&quot;\n  }\n}</component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 7\n}</component>\n  <component name=\"ProjectId\" id=\"2xG8jS0QE7ZBEQPmxBEmptRucpx\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"ModuleVcsDetector.initialDetectionPerformed\": \"true\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"RunOnceActivity.git.unshallow\": \"true\",\n    \"git-widget-placeholder\": \"ProfilePage\",\n    \"ignore.virus.scanning.warn.message\": \"true\",\n    \"node.js.detected.package.eslint\": \"true\",\n    \"node.js.detected.package.tslint\": \"true\",\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\n    \"nodejs_package_manager_path\": \"npm\",\n    \"npm.dev.executor\": \"Run\",\n    \"vue.rearranger.settings.migration\": \"true\"\n  }\n}]]></component>\n  <component name=\"RecentsManager\">\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"C:\\Users\\Nitro\\Desktop\\G11-PawAroundYou-PreHack-2025\\frontend\\public\" />\n      <recent name=\"C:\\Users\\Nitro\\Desktop\\G11-PawAroundYou-PreHack-2025\\frontend\" />\n    </key>\n  </component>\n  <component name=\"RunManager\">\n    <configuration name=\"dev\" type=\"js.build_tools.npm\" temporary=\"true\" nameIsGenerated=\"true\">\n      <package-json value=\"$PROJECT_DIR$/frontend/package.json\" />\n      <command value=\"run\" />\n      <scripts>\n        <script value=\"dev\" />\n      </scripts>\n      <node-interpreter value=\"project\" />\n      <envs />\n      <method v=\"2\" />\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"npm.dev\" />\n        <item itemvalue=\"npm.dev\" />\n        <item itemvalue=\"npm.dev\" />\n        <item itemvalue=\"npm.dev\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-WS-251.25410.117\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"ea416692-cafb-4485-b383-b962838b4c4a\" name=\"Changes\" comment=\"\" />\n      <created>1747553184550</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1747553184550</updated>\n      <workItem from=\"1747553185689\" duration=\"54000\" />\n      <workItem from=\"1747555948696\" duration=\"180000\" />\n      <workItem from=\"1747556142840\" duration=\"259000\" />\n      <workItem from=\"1747556422440\" duration=\"55000\" />\n      <workItem from=\"1747556497412\" duration=\"342000\" />\n      <workItem from=\"1747557774020\" duration=\"511000\" />\n      <workItem from=\"1747558337979\" duration=\"42000\" />\n      <workItem from=\"1747561917878\" duration=\"127000\" />\n      <workItem from=\"1747562978914\" duration=\"265000\" />\n      <workItem from=\"1747577743385\" duration=\"423000\" />\n      <workItem from=\"1747578187985\" duration=\"40000\" />\n      <workItem from=\"1747578240768\" duration=\"183000\" />\n      <workItem from=\"1747578453547\" duration=\"4773000\" />\n      <workItem from=\"1747621732288\" duration=\"2211000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"create frontend\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1747557957846</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1747557957846</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"2\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"create frontend\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"create frontend\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision d299166cf0b9ad07dfef6e6075b5d4ee31a584bd)
++++ b/.idea/workspace.xml	(date 1747638204494)
+@@ -6,6 +6,8 @@
+   <component name="ChangeListManager">
+     <list default="true" id="ea416692-cafb-4485-b383-b962838b4c4a" name="Changes" comment="create frontend">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/frontend/src/assets/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/Navbar.jsx" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/frontend/src/pages/ProfilePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/ProfilePage.jsx" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -134,7 +136,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1747557957846</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="create frontend">
++      <option name="closed" value="true" />
++      <created>1747637866115</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1747637866115</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
