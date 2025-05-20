@@ -5,15 +5,14 @@ import CreateHelpPopup from "../popup/CreateHelpPopup.jsx";
 import { getAllRequest } from "../api/getAllRequest.js";
 
 const CommunityBoard = () => {
-
-  const [data,setData] = useState([]);
+  const [data, setData] = useState([]);
   useEffect(() => {
-      const getData = async () => {
-        const data = await getAllRequest();
-        setData(() => data.data);
-      };
-      getData();
-    });
+    const getData = async () => {
+      const data = await getAllRequest();
+      setData(() => data.data);
+    };
+    getData();
+  });
 
   const itemsPerPage = 9;
   const totalPages = Math.ceil(data.length / itemsPerPage);
@@ -62,7 +61,13 @@ const CommunityBoard = () => {
                 key={card.id}
                 className="bg-white rounded-lg shadow px-4 py-6 sm:px-6 sm:py-8 relative w-full h-auto min-h-[180px]"
               >
-                <span className="absolute top-4 right-4 bg-red-100 text-red-500 text-xs font-semibold px-2 py-1 rounded">
+                <span
+                  className={`absolute top-4 right-4  text-xs font-semibold px-2 py-1 rounded ${
+                    card.status === "complete"
+                      ? "bg-green-200 text-green-700"
+                      : "bg-red-200 text-red-700"
+                  }`}
+                >
                   {card.status}
                 </span>
                 <h2 className="font-bold text-base sm:text-lg mt-4 mb-2 break-words">

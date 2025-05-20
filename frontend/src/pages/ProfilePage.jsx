@@ -25,7 +25,7 @@ function ProfilePage() {
   const [indexToDelete, setIndexToDelete] = useState(null);
 
   const [showEdit, setShowEdit] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedItem, setSelectedItem] = useState();
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
@@ -72,7 +72,7 @@ function ProfilePage() {
             >
               <span
                 className={`absolute top-2 right-2 text-xs px-2 py-1 rounded-full ${
-                  item.status === "Complete"
+                  item.status === "complete"
                     ? "bg-green-200 text-green-700"
                     : "bg-red-200 text-red-700"
                 }`}
