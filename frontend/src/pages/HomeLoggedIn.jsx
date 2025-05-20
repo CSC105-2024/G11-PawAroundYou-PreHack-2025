@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Navbar from "./../assets/Navbar";
 import CreateHelpPopup from "../popup/CreateHelpPopup.jsx";
 import { getAllRequest } from "../api/getAllRequest.js";
+import PostDetailPopup from "../popup/PostDetails.jsx";
 
 const CommunityBoard = () => {
   const [data, setData] = useState([]);
@@ -18,6 +19,7 @@ const CommunityBoard = () => {
   const totalPages = Math.ceil(data.length / itemsPerPage);
   const [currentPage, setCurrentPage] = useState(1);
   const [buttonPopup, setButtonPopup] = useState(false);
+  const [selectedPost, setSelectedPost] = useState(null);
 
   const paginatedData = data.slice(
     (currentPage - 1) * itemsPerPage,
@@ -57,6 +59,7 @@ const CommunityBoard = () => {
           {/* Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:min-h-[180px] min-h-[500px]">
             {paginatedData.map((card) => (
+
               <div
                 key={card.id}
                 className="bg-white rounded-lg shadow px-4 py-6 sm:px-6 sm:py-8 relative w-full h-auto min-h-[180px]"
@@ -112,6 +115,13 @@ const CommunityBoard = () => {
           </div>
         </div>
       </div>
+      <CreateHelpPopup trigger={buttonPopup} setTrigger={setButtonPopup} />
+      <PostDetailPopup
+          trigger={selectedPost !== null}
+          setTrigger={() => setSelectedPost(null)}
+          post={selectedPost}
+      />
+
     </>
   );
 };

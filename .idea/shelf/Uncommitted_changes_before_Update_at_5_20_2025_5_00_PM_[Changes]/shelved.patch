@@ -1,0 +1,161 @@
+Index: frontend/src/popup/CreateHelpPopup.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React, {useEffect, useState} from \"react\";\r\nimport{ getUser } from \"./../api/getUser.js\";\r\nimport { z } from \"zod\";\r\n\r\nconst postSchema = z.object({\r\n    title: z.string().min(1, \"Title is required\"),\r\n    description: z.string().min(1, \"Description is required\"),\r\n    locationDistrict: z.string().min(1, \"District is required\"),\r\n    locationProvince: z.string().min(1, \"Province is required\"),\r\n});\r\n\r\nexport default function CreateHelpPopup({ trigger, setTrigger }) {\r\n    const [form, setForm] = useState({\r\n        title: \"\",\r\n        description: \"\",\r\n        locationDistrict: \"\",\r\n        locationProvince: \"\",\r\n\r\n    });\r\n\r\n    const [errors, setErrors] = useState({});\r\n\r\n    const handleChange = (e) => {\r\n        setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));\r\n    };\r\n\r\n    const handleSubmit = (e) => {\r\n        e.preventDefault();\r\n        const result = postSchema.safeParse(form);\r\n        if (!result.success) {\r\n            const fieldErrors = {};\r\n            result.error.errors.forEach((err) => {\r\n                fieldErrors[err.path[0]] = err.message;\r\n            });\r\n            setErrors(fieldErrors);\r\n            return;\r\n        }\r\n\r\n        console.log(\"Submit form:\", form);\r\n        setErrors({});\r\n        setTrigger(false);\r\n    };\r\n\r\n    if (!trigger) return null;\r\n\r\n    return (\r\n        <div className=\"fixed inset-0  bg-opacity-40 flex justify-center items-center z-50\">\r\n            <form\r\n                onSubmit={handleSubmit}\r\n                className=\"bg-white rounded-xl shadow-xl w-[90%] max-w-3xl p-8 relative\"\r\n            >\r\n                <button\r\n                    className=\"absolute top-4 right-6 text-xl font-bold\"\r\n                    type=\"button\"\r\n                    onClick={() => setTrigger(false)}\r\n                >\r\n                    &times;\r\n                </button>\r\n\r\n                <h2 className=\"text-2xl font-bold mb-6\">Create post</h2>\r\n\r\n                <div className=\"grid grid-cols-1 md:grid-cols-2 gap-6\">\r\n                    {/* Title */}\r\n                    <div className=\"sm:order-1 md:order-1\">\r\n                        <label className=\"block font-semibold mb-1\">Title</label>\r\n                        <input\r\n                            type=\"text\"\r\n                            name=\"title\"\r\n                            value={form.title}\r\n                            onChange={handleChange}\r\n                            placeholder=\"Help me fix it\"\r\n                            className=\"w-full p-3 rounded-md shadow focus:outline-none\"\r\n                        />\r\n                        {errors.title && <p className=\"text-red-500 text-sm\">{errors.title}</p>}\r\n                    </div>\r\n                    {/* Description */}\r\n                    <div className=\"md:order-3 sm:order-2\">\r\n                        <label className=\"block font-semibold mb-1\">Description</label>\r\n                        <textarea\r\n                            name=\"description\"\r\n                            value={form.description}\r\n                            onChange={handleChange}\r\n                            placeholder=\"My code has a lot of errors...\"\r\n                            rows={4}\r\n                            className=\"w-full p-3 rounded-md shadow resize-none focus:outline-none\"\r\n                        ></textarea>\r\n                        {errors.description && (\r\n                            <p className=\"text-red-500 text-sm\">{errors.description}</p>\r\n                        )}\r\n                    </div>\r\n                    {/* Province + District */}\r\n                    <div className=\"md:order-2 sm:order-3 flex flex-col md:flex-row gap-4\">\r\n                        <div className=\"w-full md:w-1/2\">\r\n                            <label className=\"block font-semibold mb-1\">Province</label>\r\n                            <input\r\n                                type=\"text\"\r\n                                name=\"province\"\r\n                                value={form.locationProvince}\r\n                                onChange={handleChange}\r\n                                placeholder=\"Bangkok\"\r\n                                className=\"w-full p-3 rounded-md shadow focus:outline-none\"\r\n                            />\r\n                            {errors.locationProvince && (\r\n                                <p className=\"text-red-500 text-sm\">{errors.locationProvince}</p>\r\n                            )}\r\n                        </div>\r\n                        <div className=\"w-full md:w-1/2\">\r\n                            <label className=\"block font-semibold mb-1\">District</label>\r\n                            <input\r\n                                type=\"text\"\r\n                                name=\"district\"\r\n                                value={form.locationDistrict}\r\n                                onChange={handleChange}\r\n                                placeholder=\"Suan Luang\"\r\n                                className=\"w-full p-3 rounded-md shadow focus:outline-none\"\r\n                            />\r\n                            {errors.locationDistrict && (\r\n                                <p className=\"text-red-500 text-sm\">{errors.locationDistrict}</p>\r\n                            )}\r\n                        </div>\r\n                    </div>\r\n\r\n\r\n\r\n                    {/* Contact */}\r\n                    <div className=\"order-4\">\r\n                        <label className=\"block font-semibold mb-1\">Contact</label>\r\n                        <div className=\"p-3 bg-white rounded-md text-gray-600 select-none\">\r\n                            {/*{user.contact}*/}\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n\r\n                <div className=\"flex justify-center gap-4 mt-8\">\r\n                    <button\r\n                        type=\"submit\"\r\n                        className=\"bg-[#89ACCE] text-white px-6 py-2 rounded-md shadow hover:bg-[#7295b8]\"\r\n                    >\r\n                        Post\r\n                    </button>\r\n                    <button\r\n                        type=\"button\"\r\n                        onClick={() => setTrigger(false)}\r\n                        className=\"border border-[#89ACCE] text-[#89ACCE] px-6 py-2 rounded-md hover:bg-[#f2f7fb]\"\r\n                    >\r\n                        Cancel\r\n                    </button>\r\n                </div>\r\n            </form>\r\n        </div>\r\n    );\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/frontend/src/popup/CreateHelpPopup.jsx b/frontend/src/popup/CreateHelpPopup.jsx
+--- a/frontend/src/popup/CreateHelpPopup.jsx	(revision edde4744552bcff8af83cd619c9faeea6fe8a6cb)
++++ b/frontend/src/popup/CreateHelpPopup.jsx	(date 1747733434636)
+@@ -1,5 +1,4 @@
+ import React, {useEffect, useState} from "react";
+-import{ getUser } from "./../api/getUser.js";
+ import { z } from "zod";
+ 
+ const postSchema = z.object({
+@@ -94,7 +93,7 @@
+                             <label className="block font-semibold mb-1">Province</label>
+                             <input
+                                 type="text"
+-                                name="province"
++                                name="locationProvince"
+                                 value={form.locationProvince}
+                                 onChange={handleChange}
+                                 placeholder="Bangkok"
+@@ -108,7 +107,7 @@
+                             <label className="block font-semibold mb-1">District</label>
+                             <input
+                                 type="text"
+-                                name="district"
++                                name="locationDistrict"
+                                 value={form.locationDistrict}
+                                 onChange={handleChange}
+                                 placeholder="Suan Luang"
+Index: frontend/src/pages/HomeLoggedIn.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React, { useState } from \"react\";\r\nimport { Link } from \"react-router-dom\";\r\nimport Navbar from \"./../assets/Navbar\";\r\nimport CreateHelpPopup from \"../popup/CreateHelpPopup.jsx\";\r\n\r\nconst CommunityBoard = () => {\r\n  const [mockData] = useState([\r\n    {\r\n      id: 1,\r\n      title: \"How to repair pipes\",\r\n      description: \"My pipe broke at a curved corner\",\r\n      status: \"Incomplete\",\r\n    },\r\n    {\r\n      id: 2,\r\n      title: \"Fix leaking faucet\",\r\n      description: \"It drips all night. How to stop?\",\r\n      status: \"Incomplete\",\r\n    },\r\n    {\r\n      id: 3,\r\n      title: \"Water pump problem\",\r\n      description: \"It turns off randomly during the day\",\r\n      status: \"Incomplete\",\r\n    },\r\n    {\r\n      id: 4,\r\n      title: \"Bathroom clogged\",\r\n      description: \"Water won’t drain at all!\",\r\n      status: \"Incomplete\",\r\n    },\r\n    {\r\n      id: 5,\r\n      title: \"Sink leakage\",\r\n      description: \"Leaking under the cabinet\",\r\n      status: \"Incomplete\",\r\n    },\r\n    {\r\n      id: 6,\r\n      title: \"PVC joint cracked\",\r\n      description: \"Need glue recommendation\",\r\n      status: \"Incomplete\",\r\n    },\r\n    {\r\n      id: 7,\r\n      title: \"Pipe rusting\",\r\n      description: \"How to prevent future damage?\",\r\n      status: \"Incomplete\",\r\n    },\r\n    {\r\n      id: 8,\r\n      title: \"Outdoor pipe burst\",\r\n      description: \"Happened after last rain\",\r\n      status: \"Incomplete\",\r\n    },\r\n    {\r\n      id: 9,\r\n      title: \"Basement flood\",\r\n      description: \"Need urgent fix!\",\r\n      status: \"Incomplete\",\r\n    },\r\n    {\r\n      id: 10,\r\n      title: \"Low water pressure\",\r\n      description: \"From upstairs bathroom\",\r\n      status: \"Incomplete\",\r\n    },\r\n    {\r\n      id: 11,\r\n      title: \"Shower not working\",\r\n      description: \"No water comes out\",\r\n      status: \"Incomplete\",\r\n    },\r\n  ]);\r\n\r\n  const itemsPerPage = 9;\r\n  const totalPages = Math.ceil(mockData.length / itemsPerPage);\r\n  const [currentPage, setCurrentPage] = useState(1);\r\n  const [buttonPopup, setButtonPopup] = useState(false);\r\n\r\n    const paginatedData = mockData.slice(\r\n    (currentPage - 1) * itemsPerPage,\r\n    currentPage * itemsPerPage\r\n  );\r\n\r\n  const handlePrev = () => {\r\n    if (currentPage > 1) setCurrentPage(currentPage - 1);\r\n  };\r\n\r\n  const handleNext = () => {\r\n    if (currentPage < totalPages) setCurrentPage(currentPage + 1);\r\n  };\r\n\r\n  return (\r\n    <>\r\n      <Navbar />\r\n      <div className=\"min-h-screen bg-[#FFECE2] py-6 px-4 flex justify-center\">\r\n        <div className=\"w-full max-w-screen-xl bg-[#FFD3A0] rounded-lg p-6 sm:p-10 flex flex-col min-h-[80vh]\">\r\n          {/* Header */}\r\n          <div className=\"flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4\">\r\n            <h1 className=\"text-2xl sm:text-4xl font-semibold text-[#89ACCE]\">\r\n              Community board\r\n            </h1>\r\n            <button\r\n              className=\"bg-[#89ACCE] hover:bg-[#89b4e3] text-white text-lg sm:text-xl py-2 px-4 rounded self-end sm:self-auto\"\r\n              onClick={() => setButtonPopup(true)}\r\n            >\r\n              + Create\r\n            </button>\r\n              <CreateHelpPopup trigger={buttonPopup} setTrigger={setButtonPopup} />\r\n          </div>\r\n\r\n\r\n          {/* Grid */}\r\n          <div className=\"grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:min-h-[180px] min-h-[500px]\">\r\n            {paginatedData.map((card) => (\r\n              <div\r\n                key={card.id}\r\n                className=\"bg-white rounded-lg shadow px-4 py-6 sm:px-6 sm:py-8 relative w-full h-auto min-h-[180px]\"\r\n              >\r\n                <span className=\"absolute top-4 right-4 bg-red-100 text-red-500 text-xs font-semibold px-2 py-1 rounded\">\r\n                  {card.status}\r\n                </span>\r\n                <h2 className=\"font-bold text-base sm:text-lg mt-4 mb-2 break-words\">\r\n                  {card.title}\r\n                </h2>\r\n                <p className=\"text-gray-600 text-sm leading-relaxed break-words\">\r\n                  {card.description}\r\n                </p>\r\n              </div>\r\n            ))}\r\n          </div>\r\n\r\n          {/* Pagination */}\r\n          <div className=\"flex justify-center mt-8 space-x-2\">\r\n            <button\r\n              onClick={handlePrev}\r\n              disabled={currentPage === 1}\r\n              className={`px-4 py-2 rounded ${\r\n                currentPage === 1\r\n                  ? \"text-gray-400 cursor-not-allowed\"\r\n                  : \"text-black bg-white border border-gray-300\"\r\n              }`}\r\n            >\r\n              {\"<\"}\r\n            </button>\r\n\r\n            <span className=\"px-4 py-2 border rounded bg-[#89ACCE] text-white\">\r\n              {currentPage}\r\n            </span>\r\n\r\n            <button\r\n              onClick={handleNext}\r\n              disabled={currentPage === totalPages}\r\n              className={`px-4 py-2 rounded ${\r\n                currentPage === totalPages\r\n                  ? \"text-gray-400 cursor-not-allowed\"\r\n                  : \"text-black bg-white border border-gray-300\"\r\n              }`}\r\n            >\r\n              {\">\"}\r\n            </button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </>\r\n  );\r\n};\r\n\r\nexport default CommunityBoard;\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/frontend/src/pages/HomeLoggedIn.jsx b/frontend/src/pages/HomeLoggedIn.jsx
+--- a/frontend/src/pages/HomeLoggedIn.jsx	(revision edde4744552bcff8af83cd619c9faeea6fe8a6cb)
++++ b/frontend/src/pages/HomeLoggedIn.jsx	(date 1747735087182)
+@@ -2,6 +2,7 @@
+ import { Link } from "react-router-dom";
+ import Navbar from "./../assets/Navbar";
+ import CreateHelpPopup from "../popup/CreateHelpPopup.jsx";
++import PostDetailPopup from "../popup/PostDetails.jsx";
+ 
+ const CommunityBoard = () => {
+   const [mockData] = useState([
+@@ -77,8 +78,9 @@
+   const totalPages = Math.ceil(mockData.length / itemsPerPage);
+   const [currentPage, setCurrentPage] = useState(1);
+   const [buttonPopup, setButtonPopup] = useState(false);
++  const [selectedPost, setSelectedPost] = useState(null);
+ 
+-    const paginatedData = mockData.slice(
++  const paginatedData = mockData.slice(
+     (currentPage - 1) * itemsPerPage,
+     currentPage * itemsPerPage
+   );
+@@ -114,10 +116,12 @@
+           {/* Grid */}
+           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:min-h-[180px] min-h-[500px]">
+             {paginatedData.map((card) => (
+-              <div
+-                key={card.id}
+-                className="bg-white rounded-lg shadow px-4 py-6 sm:px-6 sm:py-8 relative w-full h-auto min-h-[180px]"
+-              >
++                <div
++                    key={card.id}
++                    onClick={() => setSelectedPost(card)}
++                    className="cursor-pointer bg-white rounded-lg shadow px-4 py-6 sm:px-6 sm:py-8 relative w-full h-auto min-h-[180px] hover:shadow-lg transition"
++                >
++
+                 <span className="absolute top-4 right-4 bg-red-100 text-red-500 text-xs font-semibold px-2 py-1 rounded">
+                   {card.status}
+                 </span>
+@@ -163,6 +167,12 @@
+           </div>
+         </div>
+       </div>
++      <CreateHelpPopup trigger={buttonPopup} setTrigger={setButtonPopup} />
++      <PostDetailPopup
++          trigger={selectedPost !== null}
++          setTrigger={() => setSelectedPost(null)}
++          post={selectedPost}
++      />
+     </>
+   );
+ };
+Index: frontend/src/popup/CreateHelpForm.jsx
+===================================================================
+diff --git a/frontend/src/popup/CreateHelpForm.jsx b/frontend/src/popup/PostDetails.jsx
+rename from frontend/src/popup/CreateHelpForm.jsx
+rename to frontend/src/popup/PostDetails.jsx
+--- a/frontend/src/popup/CreateHelpForm.jsx	(revision edde4744552bcff8af83cd619c9faeea6fe8a6cb)
++++ b/frontend/src/popup/PostDetails.jsx	(date 1747735216365)
+@@ -1,0 +1,60 @@
++import React from "react";
++
++export default function PostDetailPopup({ trigger, setTrigger, post }) {
++    if (!trigger || !post) return null;
++
++    return (
++        <div className="fixed inset-0 bg-opacity-40 flex justify-center items-center z-50">
++            <div className="bg-white rounded-2xl shadow-xl w-[90%] max-w-4xl p-8 relative">
++
++                <button
++                    className="absolute top-4 right-6 text-xl font-bold"
++                    onClick={() => setTrigger(false)}
++                >
++                    &times;
++                </button>
++
++                <div className="absolute top-4 right-20">
++          <span className="bg-red-400 text-white font-medium px-4 py-1 rounded-md">
++            Incomplete
++          </span>
++                </div>
++
++                <h2 className="text-2xl font-bold mb-8">{post.name}</h2>
++
++                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
++                    <div>
++                        <div className="mb-6">
++                            <h3 className="font-semibold">Title</h3>
++                            <p className="text-[#89ACCE] rounded-md mt-1">{post.title}</p>
++                        </div>
++                        <div className="mb-6">
++                            <h3 className="font-semibold">Description</h3>
++                            <p className="text-[#89ACCE] rounded-md mt-1">{post.description}</p>
++                        </div>
++                    </div>
++
++                    <div>
++                        <div className="mb-6">
++                            <h3 className="font-semibold">Contact</h3>
++                            <p className="text-[#89ACCE] rounded-md mt-1">{post.contact}</p>
++                        </div>
++                        <div className="mb-6">
++                            <h3 className="font-semibold">Location</h3>
++                            <p className="text-[#89ACCE] rounded-md mt-1">{post.location}</p>
++                        </div>
++                    </div>
++                </div>
++
++                <div className="flex justify-center mt-10">
++                    <button
++                        onClick={() => setTrigger(false)}
++                        className="bg-[#89ACCE] text-white px-6 py-2 rounded-md hover:bg-[#7295b8]"
++                    >
++                        Close
++                    </button>
++                </div>
++            </div>
++        </div>
++    );
++}
