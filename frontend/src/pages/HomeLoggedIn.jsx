@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./../assets/Navbar";
+import CreateHelpPopup from "../popup/CreateHelpPopup.jsx";
 
 const CommunityBoard = () => {
   const [mockData] = useState([
@@ -75,8 +76,9 @@ const CommunityBoard = () => {
   const itemsPerPage = 9;
   const totalPages = Math.ceil(mockData.length / itemsPerPage);
   const [currentPage, setCurrentPage] = useState(1);
+  const [buttonPopup, setButtonPopup] = useState(false);
 
-  const paginatedData = mockData.slice(
+    const paginatedData = mockData.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
@@ -99,13 +101,15 @@ const CommunityBoard = () => {
             <h1 className="text-2xl sm:text-4xl font-semibold text-[#89ACCE]">
               Community board
             </h1>
-            <Link
-              to="/create-post"
+            <button
               className="bg-[#89ACCE] hover:bg-[#89b4e3] text-white text-lg sm:text-xl py-2 px-4 rounded self-end sm:self-auto"
+              onClick={() => setButtonPopup(true)}
             >
               + Create
-            </Link>
+            </button>
+              <CreateHelpPopup trigger={buttonPopup} setTrigger={setButtonPopup} />
           </div>
+
 
           {/* Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:min-h-[180px] min-h-[500px]">
