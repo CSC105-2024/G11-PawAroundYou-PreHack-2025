@@ -1,8 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./../assets/Navbar";
 
 const CommunityBoard = () => {
+  const [itemsPerPage, setItemsPerPage] = useState(9); 
+  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    const updateItemsPerPage = () => {
+      const width = window.innerWidth;
+      if (width < 768) {
+        setItemsPerPage(8); 
+      } else {
+        setItemsPerPage(9); 
+      }
+    };
+
+    updateItemsPerPage(); 
+    window.addEventListener("resize", updateItemsPerPage);
+
+    return () => window.removeEventListener("resize", updateItemsPerPage);
+  }, []);
   const [mockData] = useState([
     {
       id: 1,
@@ -72,9 +90,7 @@ const CommunityBoard = () => {
     },
   ]);
 
-  const itemsPerPage = 9;
   const totalPages = Math.ceil(mockData.length / itemsPerPage);
-  const [currentPage, setCurrentPage] = useState(1);
 
   const paginatedData = mockData.slice(
     (currentPage - 1) * itemsPerPage,
