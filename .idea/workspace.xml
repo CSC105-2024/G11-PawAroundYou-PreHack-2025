@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea416692-cafb-4485-b383-b962838b4c4a" name="Changes" comment="create frontend">
+    <list default="true" id="ea416692-cafb-4485-b383-b962838b4c4a" name="Changes" comment="fix navbar">
+      <change afterPath="$PROJECT_DIR$/frontend/src/popup/CreateHelpPopup.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/ProfilePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/ProfilePage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/popup/EditPopup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/popup/EditPopup.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/HomeLoggedIn.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/HomeLoggedIn.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/popup/CreateHelpForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/getUser.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,28 +61,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "ProfilePage",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.dev.executor": "Run",
-    "ts.external.directory.path": "/Users/riewta/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;homepage&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Nitro\\Desktop\\G11-PawAroundYou-PreHack-2025\\backend\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Nitro\Desktop\G11-PawAroundYou-PreHack-2025\frontend\public" />
@@ -136,6 +137,10 @@
       <workItem from="1747578240768" duration="183000" />
       <workItem from="1747578453547" duration="4773000" />
       <workItem from="1747621732288" duration="2211000" />
+      <workItem from="1747665884943" duration="1984000" />
+      <workItem from="1747722908445" duration="5760000" />
+      <workItem from="1747728789186" duration="5000" />
+      <workItem from="1747728843158" duration="46000" />
     </task>
     <task id="LOCAL-00001" summary="create frontend">
       <option name="closed" value="true" />
@@ -145,21 +150,21 @@
       <option name="project" value="LOCAL" />
       <updated>1747557957846</updated>
     </task>
-    <task id="LOCAL-00002" summary="create frontend">
+    <task id="LOCAL-00002" summary="finish login and setLogin true in navbar">
       <option name="closed" value="true" />
-      <created>1747727310263</created>
+      <created>1747666082304</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1747727310263</updated>
+      <updated>1747666082305</updated>
     </task>
-    <task id="LOCAL-00003" summary="create frontend">
+    <task id="LOCAL-00003" summary="fix navbar">
       <option name="closed" value="true" />
-      <created>1747727328299</created>
+      <created>1747724507016</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1747727328299</updated>
+      <updated>1747724507016</updated>
     </task>
     <option name="localTasksCounter" value="4" />
     <servers />
@@ -180,6 +185,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="create frontend" />
-    <option name="LAST_COMMIT_MESSAGE" value="create frontend" />
+    <MESSAGE value="finish login and setLogin true in navbar" />
+    <MESSAGE value="fix navbar" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix navbar" />
   </component>
 </project>
