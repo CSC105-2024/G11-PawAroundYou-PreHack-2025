@@ -21,7 +21,7 @@ export default function HomePage() {
           />
 
           {/* ปุ่ม Join the Community (เฉพาะ Desktop อยู่ตรงนี้) */}
-          <div className="hidden md:block text-center mb-10">
+          <div className="hidden md:block text-center m-10">
             <Link
               to="/signup"
               className="bg-[#89ACCE] text-white px-6 py-3 rounded-sm font-medium shadow-md hover:bg-[#6e95bb]"
