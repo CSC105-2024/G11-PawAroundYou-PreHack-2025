@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -23,12 +22,16 @@ function Navbar() {
     <header className="flex justify-between items-center px-8 py-6 bg-[#FFECE2] text-[#89ACCE]">
       <div className="text-2xl font-semibold flex items-center gap-2">
         <span>
-          <img src="./public/WrenchLogo.png" alt="WrenchLogo" className="w-8 h-8" />
+          <img
+            src="./public/WrenchLogo.png"
+            alt="WrenchLogo"
+            className="w-8 h-8"
+          />
         </span>
         Ma Help Kan
       </div>
 
-        {isLoggedIn ? (
+      {isLoggedIn ? (
         <>
           <nav className="flex gap-12 text-xl font-medium">
             <a href="/home" className="hover:underline">
@@ -47,7 +50,10 @@ function Navbar() {
         </>
       ) : (
         <button
-          onClick={handleLogout}
+          onClick={() => {
+            handleLogout
+            localStorage.removeItem("isLoggedIn");
+          }}
           className="bg-[#89ACCE] text-white text-xl font-medium px-4 py-2 rounded-md hover:bg-[#7295b8] transition"
         >
           <Link to="/signup">Sign Up</Link>
