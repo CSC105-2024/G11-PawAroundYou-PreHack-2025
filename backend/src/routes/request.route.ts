@@ -4,8 +4,7 @@ import { authMiddleware } from "../middleware/authMiddleware.ts";
 
 const requestRouter = new Hono();
 
-requestRouter.post("/create", requestController.createRequest);
-//requestRouter.post("/create", authMiddleware, requestController.createRequest);
+requestRouter.post("/create", authMiddleware, requestController.createRequest);
 requestRouter.patch("/edit", requestController.editRequest);
 requestRouter.get("/get", requestController.getRequest);
 requestRouter.get("/getAll", requestController.getAllRequest);
