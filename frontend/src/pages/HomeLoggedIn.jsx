@@ -1,84 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./../assets/Navbar";
 import CreateHelpPopup from "../popup/CreateHelpPopup.jsx";
+import { getAllRequest } from "../api/getAllRequest.js";
 
 const CommunityBoard = () => {
-  const [mockData] = useState([
-    {
-      id: 1,
-      title: "How to repair pipes",
-      description: "My pipe broke at a curved corner",
-      status: "Incomplete",
-    },
-    {
-      id: 2,
-      title: "Fix leaking faucet",
-      description: "It drips all night. How to stop?",
-      status: "Incomplete",
-    },
-    {
-      id: 3,
-      title: "Water pump problem",
-      description: "It turns off randomly during the day",
-      status: "Incomplete",
-    },
-    {
-      id: 4,
-      title: "Bathroom clogged",
-      description: "Water won’t drain at all!",
-      status: "Incomplete",
-    },
-    {
-      id: 5,
-      title: "Sink leakage",
-      description: "Leaking under the cabinet",
-      status: "Incomplete",
-    },
-    {
-      id: 6,
-      title: "PVC joint cracked",
-      description: "Need glue recommendation",
-      status: "Incomplete",
-    },
-    {
-      id: 7,
-      title: "Pipe rusting",
-      description: "How to prevent future damage?",
-      status: "Incomplete",
-    },
-    {
-      id: 8,
-      title: "Outdoor pipe burst",
-      description: "Happened after last rain",
-      status: "Incomplete",
-    },
-    {
-      id: 9,
-      title: "Basement flood",
-      description: "Need urgent fix!",
-      status: "Incomplete",
-    },
-    {
-      id: 10,
-      title: "Low water pressure",
-      description: "From upstairs bathroom",
-      status: "Incomplete",
-    },
-    {
-      id: 11,
-      title: "Shower not working",
-      description: "No water comes out",
-      status: "Incomplete",
-    },
-  ]);
+
+  const [data,setData] = useState([]);
+  useEffect(() => {
+      const getData = async () => {
+        const data = await getAllRequest();
+        setData(() => data.data);
+      };
+      getData();
+    });
 
   const itemsPerPage = 9;
-  const totalPages = Math.ceil(mockData.length / itemsPerPage);
+  const totalPages = Math.ceil(data.length / itemsPerPage);
   const [currentPage, setCurrentPage] = useState(1);
   const [buttonPopup, setButtonPopup] = useState(false);
 
-    const paginatedData = mockData.slice(
+  const paginatedData = data.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
@@ -107,9 +49,11 @@ const CommunityBoard = () => {
             >
               + Create
             </button>
-              <CreateHelpPopup trigger={buttonPopup} setTrigger={setButtonPopup} />
+            <CreateHelpPopup
+              trigger={buttonPopup}
+              setTrigger={setButtonPopup}
+            />
           </div>
-
 
           {/* Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:min-h-[180px] min-h-[500px]">

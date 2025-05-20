@@ -12,7 +12,7 @@ function ProfilePage() {
   useEffect(() => {
     const getRequestUser = async () => {
       const data = await getAllRequestFromUser();
-      setPets(() => data.data);
+      setItems(() => data.data);
     };
     getRequestUser();
   });
