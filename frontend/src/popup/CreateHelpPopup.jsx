@@ -10,6 +10,7 @@ const postSchema = z.object({
 });
 
 export default function CreateHelpPopup({ trigger, setTrigger }) {
+    
   const [form, setForm] = useState({
     title: "",
     description: "",
@@ -53,8 +54,7 @@ export default function CreateHelpPopup({ trigger, setTrigger }) {
     const res = await createRequest(realFormData);
 
     if (res.success) {
-      location.reload();
-      setStatus("Pet created!!");
+    //   location.reload();
     } else {
       alert("Error creating a pet! Try Again!");
     }
