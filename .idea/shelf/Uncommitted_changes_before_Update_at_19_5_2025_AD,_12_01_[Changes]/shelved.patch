@@ -1,0 +1,81 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"ea416692-cafb-4485-b383-b962838b4c4a\" name=\"Changes\" comment=\"create frontend\">\n      <change afterPath=\"$PROJECT_DIR$/frontend/public/Teamwork.png\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/frontend/src/assets/Navbar.js\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/frontend/src/pages/HomePage.jsx\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/frontend/package-lock.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/frontend/package-lock.json\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/frontend/package.json\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/frontend/src/App.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/frontend/src/App.css\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/frontend/src/App.jsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/frontend/src/App.jsx\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/frontend/src/assets/react.svg\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/frontend/src/index.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/frontend/src/index.css\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/frontend/src/main.jsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/frontend/src/main.jsx\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/frontend/vite.config.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/frontend/vite.config.js\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"JSX File\" />\n        <option value=\"JavaScript File\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitHubPullRequestSearchHistory\">{\n  &quot;lastFilter&quot;: {\n    &quot;state&quot;: &quot;OPEN&quot;,\n    &quot;assignee&quot;: &quot;xoxo-a&quot;\n  }\n}</component>\n  <component name=\"GithubProjectSettings\">\n    <option name=\"branchProtectionPatterns\">\n      <list>\n        <option value=\"main\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"GithubPullRequestsUISettings\">{\n  &quot;selectedUrlAndAccountId&quot;: {\n    &quot;url&quot;: &quot;https://github.com/CSC105-2024/G11-PawAroundYou-PreHack-2025.git&quot;,\n    &quot;accountId&quot;: &quot;675695f6-a9a0-4b39-8ddd-926955dee5ff&quot;\n  }\n}</component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 7\n}</component>\n  <component name=\"ProjectId\" id=\"2xG8jS0QE7ZBEQPmxBEmptRucpx\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;homepage&quot;,\n    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\n    &quot;npm.dev.executor&quot;: &quot;Run&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  }\n}</component>\n  <component name=\"RecentsManager\">\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"C:\\Users\\Nitro\\Desktop\\G11-PawAroundYou-PreHack-2025\\frontend\\public\" />\n      <recent name=\"C:\\Users\\Nitro\\Desktop\\G11-PawAroundYou-PreHack-2025\\frontend\" />\n    </key>\n  </component>\n  <component name=\"RunManager\">\n    <configuration name=\"dev\" type=\"js.build_tools.npm\" temporary=\"true\" nameIsGenerated=\"true\">\n      <package-json value=\"$PROJECT_DIR$/frontend/package.json\" />\n      <command value=\"run\" />\n      <scripts>\n        <script value=\"dev\" />\n      </scripts>\n      <node-interpreter value=\"project\" />\n      <envs />\n      <method v=\"2\" />\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"npm.dev\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-WS-251.25410.117\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"ea416692-cafb-4485-b383-b962838b4c4a\" name=\"Changes\" comment=\"\" />\n      <created>1747553184550</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1747553184550</updated>\n      <workItem from=\"1747553185689\" duration=\"54000\" />\n      <workItem from=\"1747555948696\" duration=\"180000\" />\n      <workItem from=\"1747556142840\" duration=\"259000\" />\n      <workItem from=\"1747556422440\" duration=\"55000\" />\n      <workItem from=\"1747556497412\" duration=\"342000\" />\n      <workItem from=\"1747557774020\" duration=\"511000\" />\n      <workItem from=\"1747558337979\" duration=\"42000\" />\n      <workItem from=\"1747561917878\" duration=\"127000\" />\n      <workItem from=\"1747562978914\" duration=\"265000\" />\n      <workItem from=\"1747577743385\" duration=\"423000\" />\n      <workItem from=\"1747578187985\" duration=\"40000\" />\n      <workItem from=\"1747578240768\" duration=\"183000\" />\n      <workItem from=\"1747578453547\" duration=\"4773000\" />\n      <workItem from=\"1747621732288\" duration=\"2211000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"create frontend\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1747557957846</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1747557957846</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"2\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"create frontend\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"create frontend\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 36318d4cd2c006bb6b2bf7cb65372837e44dd1d8)
++++ b/.idea/workspace.xml	(date 1747630869518)
+@@ -4,19 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="ea416692-cafb-4485-b383-b962838b4c4a" name="Changes" comment="create frontend">
+-      <change afterPath="$PROJECT_DIR$/frontend/public/Teamwork.png" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/frontend/src/assets/Navbar.js" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/HomePage.jsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/frontend/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.css" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/frontend/src/assets/react.svg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.css" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/frontend/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main.jsx" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/frontend/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/vite.config.js" afterDir="false" />
+-    </list>
++    <list default="true" id="ea416692-cafb-4485-b383-b962838b4c4a" name="Changes" comment="create frontend" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -31,6 +19,11 @@
+     </option>
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="ProfilePage" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="GitHubPullRequestSearchHistory">{
+@@ -60,22 +53,22 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;homepage&quot;,
+-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "ModuleVcsDetector.initialDetectionPerformed": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "RunOnceActivity.git.unshallow": "true",
++    "git-widget-placeholder": "main",
++    "ignore.virus.scanning.warn.message": "true",
++    "node.js.detected.package.eslint": "true",
++    "node.js.detected.package.tslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "nodejs_package_manager_path": "npm",
++    "npm.dev.executor": "Run",
++    "vue.rearranger.settings.migration": "true"
+   }
+-}</component>
++}]]></component>
+   <component name="RecentsManager">
+     <key name="MoveFile.RECENT_KEYS">
+       <recent name="C:\Users\Nitro\Desktop\G11-PawAroundYou-PreHack-2025\frontend\public" />

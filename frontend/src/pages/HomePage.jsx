@@ -20,8 +20,18 @@ export default function HomePage() {
             className="rounded-xl w-full mb-5 shadow"
           />
 
-          {/* ปุ่ม Join the Community (เฉพาะ Desktop อยู่ตรงนี้) */}
-          <div className="hidden md:block text-center mb-10">
+          {/* Join Button Mobile*/}
+          <div className="md:hidden text-center mt-10">
+            <Link
+              to="/signup"
+              className="bg-[#89ACCE] text-white px-6 py-3 rounded-sm font-semibold shadow-md hover:bg-[#6e95bb]"
+            >
+              Join the Community
+            </Link>
+          </div>
+
+          {/* Join Button Destktop*/}
+          <div className="hidden md:block text-center m-10">
             <Link
               to="/signup"
               className="bg-[#89ACCE] text-white px-6 py-3 rounded-sm font-medium shadow-md hover:bg-[#6e95bb]"
@@ -37,6 +47,7 @@ export default function HomePage() {
               alt="Hands together"
               className="rounded-xl w-full md:w-1/2 shadow"
             />
+
             <p className="text-lg md:w-1/2 leading-relaxed">
               We believe no one should face challenges alone. Our community is
               built on support, where people come together to offer help, share
@@ -56,15 +67,6 @@ export default function HomePage() {
               share kindness. Whether you need a hand or want to lend one — this
               space is for you.
             </p>
-          </div>
-
-          <div className="md:hidden text-center mt-10">
-            <Link
-              to="/signup"
-              className="bg-[#89ACCE] text-white px-6 py-3 rounded-sm font-semibold shadow-md hover:bg-[#6e95bb]"
-            >
-              Join the Community
-            </Link>
           </div>
         </main>
       </div>
