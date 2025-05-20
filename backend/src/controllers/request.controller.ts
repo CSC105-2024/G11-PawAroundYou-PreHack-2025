@@ -21,12 +21,13 @@ type editRequestBody = {
 export const createRequest = async (c: Context) => {
   try {
     // //Waiting for Integration
-    // const userId = c.get("userId");
-    // const formData = await c.req.parseBody();
-    // const body = JSON.parse(formData.json as string);
+    const userId = c.get("userId");
+    const formData = await c.req.parseBody();
+    const body = JSON.parse(formData.json as string);
+    console.log(body);
 
     // const userId = c.req.query("userId");
-    const body = await c.req.json<createRequestBody>();
+    // const body = await c.req.json<createRequestBody>();
 
     if (
       !body.title ||
@@ -42,7 +43,7 @@ export const createRequest = async (c: Context) => {
         },
         400
       );
-    if (!body.userId)
+    if (!userId)
       return c.json({
         success: false,
         msg: "userId is Undefinded",
@@ -53,7 +54,7 @@ export const createRequest = async (c: Context) => {
       body.description,
       body.locationDistrict,
       body.locationProvince,
-      body.userId
+      userId
     );
     return c.json({
       success: true,
