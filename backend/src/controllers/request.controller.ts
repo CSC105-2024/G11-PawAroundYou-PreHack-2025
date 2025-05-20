@@ -26,9 +26,6 @@ export const createRequest = async (c: Context) => {
     const body = JSON.parse(formData.json as string);
     console.log(body);
 
-    // const userId = c.req.query("userId");
-    // const body = await c.req.json<createRequestBody>();
-
     if (
       !body.title ||
       !body.description ||
@@ -75,13 +72,13 @@ export const createRequest = async (c: Context) => {
 
 export const editRequest = async (c: Context) => {
   try {
-    //Integration
-    // const userId = c.get("userId");
-    // const formData = await c.req.parseBody();
-    // const body = JSON.parse(formData.json as string);
+    // Integration
+    const userId = c.get("userId");
+    const formData = await c.req.parseBody();
+    const body = JSON.parse(formData.json as string);
 
     const requestId = c.req.query("requestId");
-    const body = await c.req.json<editRequestBody>();
+    // const body = await c.req.json<editRequestBody>();
 
     if (
       !body.title ||
