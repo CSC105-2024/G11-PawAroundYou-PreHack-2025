@@ -1,98 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./../assets/Navbar";
+import { getAllRequest } from "../api/getAllRequest";
 
 const CommunityBoard = () => {
-  const [itemsPerPage, setItemsPerPage] = useState(9); 
+  const [itemsPerPage, setItemsPerPage] = useState(9);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
+    const getData = async () => {
+      const data = await getAllRequest();
+      setRequestData(()=> data.data);
+    };
+    getData();
+
     const updateItemsPerPage = () => {
       const width = window.innerWidth;
       if (width < 768) {
-        setItemsPerPage(8); 
+        setItemsPerPage(8);
       } else {
-        setItemsPerPage(9); 
+        setItemsPerPage(9);
       }
     };
 
-    updateItemsPerPage(); 
+    updateItemsPerPage();
     window.addEventListener("resize", updateItemsPerPage);
 
     return () => window.removeEventListener("resize", updateItemsPerPage);
   }, []);
-  const [mockData] = useState([
-    {
-      id: 1,
-      title: "How to repair pipes",
-      description: "My pipe broke at a curved corner",
-      status: "Incomplete",
-    },
-    {
-      id: 2,
-      title: "Fix leaking faucet",
-      description: "It drips all night. How to stop?",
-      status: "Incomplete",
-    },
-    {
-      id: 3,
-      title: "Water pump problem",
-      description: "It turns off randomly during the day",
-      status: "Incomplete",
-    },
-    {
-      id: 4,
-      title: "Bathroom clogged",
-      description: "Water won’t drain at all!",
-      status: "Incomplete",
-    },
-    {
-      id: 5,
-      title: "Sink leakage",
-      description: "Leaking under the cabinet",
-      status: "Incomplete",
-    },
-    {
-      id: 6,
-      title: "PVC joint cracked",
-      description: "Need glue recommendation",
-      status: "Incomplete",
-    },
-    {
-      id: 7,
-      title: "Pipe rusting",
-      description: "How to prevent future damage?",
-      status: "Incomplete",
-    },
-    {
-      id: 8,
-      title: "Outdoor pipe burst",
-      description: "Happened after last rain",
-      status: "Incomplete",
-    },
-    {
-      id: 9,
-      title: "Basement flood",
-      description: "Need urgent fix!",
-      status: "Incomplete",
-    },
-    {
-      id: 10,
-      title: "Low water pressure",
-      description: "From upstairs bathroom",
-      status: "Incomplete",
-    },
-    {
-      id: 11,
-      title: "Shower not working",
-      description: "No water comes out",
-      status: "Incomplete",
-    },
-  ]);
+  const [requestData, setRequestData] = useState([]);
+  const totalPages = Math.ceil(requestData.length / itemsPerPage);
 
-  const totalPages = Math.ceil(mockData.length / itemsPerPage);
-
-  const paginatedData = mockData.slice(
+  const paginatedData = requestData.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
