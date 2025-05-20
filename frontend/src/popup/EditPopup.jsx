@@ -44,7 +44,7 @@ export default function EditPopup({trigger, item, onCancel, onSave}) {
           status === "Complete" ? "bg-green-500" : "bg-white"
       }`}
   ></span>
-
+                    {status}
                 </button>
                 <h2 className="text-xl font-bold mb-6">Edit post</h2>
 
