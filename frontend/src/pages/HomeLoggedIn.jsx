@@ -59,7 +59,6 @@ const CommunityBoard = () => {
           {/* Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:min-h-[180px] min-h-[500px]">
             {paginatedData.map((card) => (
-
               <div
                 key={card.id}
                 className="bg-white rounded-lg shadow px-4 py-6 sm:px-6 sm:py-8 relative w-full h-auto min-h-[180px]"
