@@ -1,8 +1,8 @@
 import { axiosInstance } from "./../axios";
 
-export const getAllRequest = async () => {
+export const getAllRequestFromUser = async () => {
   try {
-    const res = await axiosInstance.get("/request/getAll");
+    const res = await axiosInstance.get("/user/requests");
     // console.log(res);
     return {
       success: true,
