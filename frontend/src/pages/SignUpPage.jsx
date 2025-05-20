@@ -5,13 +5,14 @@ import TabSwitcher from "../pages/TabSwitcher";
 import { useEffect, useState } from "react";
 // import { createAccount } from "../api/createAccount";
 import { useNavigate } from "react-router-dom";
+import { createAccount } from "../api/createAccount";
 
 //Create a Zod schema
 const signUpSchema = z.object({
   email: z.string().email("Invalid email address"),
   password: z.string().min(6, "Password must be at least 6 characters"),
-  firstName: z.string().min(1, "First name is required"),
-  lastName: z.string().min(1, "lastName is required"),
+  fName: z.string().min(1, "First name is required"),
+  sName: z.string().min(1, "lastName is required"),
   tel: z
       .string()
       .regex(/^[0-9]{9,15}$/, "Phone number must be 10 digit from 0-9"),
@@ -88,7 +89,7 @@ const SignUpPage = () => {
             <div>
               <label className="text-sm font-semibold">First Name</label>
               <input
-                  {...register("firstName")}
+                  {...register("fName")}
                   type="text"
                   placeholder="Mitsuki"
                   className="w-full mt-1 px-4 py-2 rounded-md border border-gray-300 text-[#6e95bb] bg-white shadow focus:outline-none focus:ring-2 focus:ring-[#6e95bb]"
@@ -100,7 +101,7 @@ const SignUpPage = () => {
             <div>
               <label className="text-sm font-semibold">lastName</label>
               <input
-                  {...register("lastName")}
+                  {...register("sName")}
                   type="text"
                   placeholder="Tanaiwa"
                   className="w-full mt-1 px-4 py-2 rounded-md border border-gray-300 text-[#6e95bb] bg-white shadow focus:outline-none focus:ring-2 focus:ring-[#6e95bb]"

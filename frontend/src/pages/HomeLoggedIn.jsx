@@ -92,72 +92,66 @@ const CommunityBoard = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-[#FFECE2] p-10 flex justify-center">
-        <div className="w-11/12 bg-[#FFD3A0] p-12">
+      <div className="min-h-screen bg-[#FFECE2] py-6 px-4 flex justify-center">
+        <div className="w-full max-w-screen-xl bg-[#FFD3A0] rounded-lg p-6 sm:p-10 flex flex-col min-h-[80vh]">
           {/* Header */}
-          <div className="flex justify-between items-center mb-6">
-            <h1 className="text-4xl font-semibold text-[#89ACCE]">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+            <h1 className="text-2xl sm:text-4xl font-semibold text-[#89ACCE]">
               Community board
             </h1>
             <Link
               to="/create-post"
-              className="bg-[#89ACCE] hover:bg-[#89b4e3] text-white text-xl font-semibold py-2 px-4 rounded"
+              className="bg-[#89ACCE] hover:bg-[#89b4e3] text-white text-lg sm:text-xl py-2 px-4 rounded self-end sm:self-auto"
             >
               + Create
             </Link>
           </div>
 
           {/* Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:min-h-[180px] min-h-[500px]">
             {paginatedData.map((card) => (
               <div
                 key={card.id}
-                className="bg-white rounded-lg shadow p-8 relative w-full h-[250px]"
+                className="bg-white rounded-lg shadow px-4 py-6 sm:px-6 sm:py-8 relative w-full h-auto min-h-[180px]"
               >
-                <span className="absolute top-6 right-6 bg-red-100 text-red-500 text-xs font-semibold px-2 py-1 rounded">
+                <span className="absolute top-4 right-4 bg-red-100 text-red-500 text-xs font-semibold px-2 py-1 rounded">
                   {card.status}
                 </span>
-                <h2 className="font-bold text-sm mb-2">{card.title}</h2>
-                <p className="text-gray-600 text-sm">{card.description}</p>
+                <h2 className="font-bold text-base sm:text-lg mt-4 mb-2 break-words">
+                  {card.title}
+                </h2>
+                <p className="text-gray-600 text-sm leading-relaxed break-words">
+                  {card.description}
+                </p>
               </div>
             ))}
           </div>
 
           {/* Pagination */}
-          <div className="flex justify-center mt-6 space-x-2">
+          <div className="flex justify-center mt-8 space-x-2">
             <button
               onClick={handlePrev}
               disabled={currentPage === 1}
-              className={`px-4 py-2 rounded border ${
+              className={`px-4 py-2 rounded ${
                 currentPage === 1
-                  ? "bg-gray-200 text-gray-500 cursor-not-allowed"
-                  : "bg-white text-[#E97A28] border-[#E97A28]"
+                  ? "text-gray-400 cursor-not-allowed"
+                  : "text-black bg-white border border-gray-300"
               }`}
             >
               {"<"}
             </button>
 
-            {Array.from({ length: totalPages }, (_, i) => (
-              <button
-                key={i + 1}
-                onClick={() => setCurrentPage(i + 1)}
-                className={`px-4 py-2 border rounded ${
-                  currentPage === i + 1
-                    ? "bg-[#E97A28] text-white"
-                    : "bg-white text-[#E97A28] border-[#E97A28]"
-                }`}
-              >
-                {i + 1}
-              </button>
-            ))}
+            <span className="px-4 py-2 border rounded bg-[#89ACCE] text-white">
+              {currentPage}
+            </span>
 
             <button
               onClick={handleNext}
               disabled={currentPage === totalPages}
-              className={`px-4 py-2 rounded border ${
+              className={`px-4 py-2 rounded ${
                 currentPage === totalPages
-                  ? "bg-gray-200 text-gray-500 cursor-not-allowed"
-                  : "bg-white text-[#E97A28] border-[#E97A28]"
+                  ? "text-gray-400 cursor-not-allowed"
+                  : "text-black bg-white border border-gray-300"
               }`}
             >
               {">"}
