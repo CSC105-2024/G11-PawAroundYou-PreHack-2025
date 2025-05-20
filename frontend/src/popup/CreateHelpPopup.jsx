@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { z } from "zod";
 import { createRequest } from "../api/createRequest";
+import { getUser } from "../api/getUser";
+import { getUserLoggedIn } from '../api/getUserLoggedIn';
 
 const postSchema = z.object({
   title: z.string().min(1, "Title is required"),
@@ -10,7 +12,19 @@ const postSchema = z.object({
 });
 
 export default function CreateHelpPopup({ trigger, setTrigger }) {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const getUserData = async () => {
+      const res = await getUserLoggedIn();
+      setUser(() => res.data);
+      localStorage.setItem("userId", (res.data.data));
+    };
+    getUserData();
     
+  });
+  
+
   const [form, setForm] = useState({
     title: "",
     description: "",
@@ -54,7 +68,7 @@ export default function CreateHelpPopup({ trigger, setTrigger }) {
     const res = await createRequest(realFormData);
 
     if (res.success) {
-    //   location.reload();
+      location.reload();
     } else {
       alert("Error creating a pet! Try Again!");
     }
@@ -149,7 +163,7 @@ export default function CreateHelpPopup({ trigger, setTrigger }) {
           <div className="order-4">
             <label className="block font-semibold mb-1">Contact</label>
             <div className="p-3 bg-white rounded-md text-gray-600 select-none">
-              {/*{user.contact}*/}
+              {user.tel}
             </div>
           </div>
         </div>

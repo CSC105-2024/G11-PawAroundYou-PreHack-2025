@@ -7,6 +7,7 @@ import EditHoverIcon from "/EditHov.png";
 import DeleteIcon from "/Delete.png";
 import DeleteHoverIcon from "/DeleteHov.png";
 import { getAllRequestFromUser } from "../api/getRequestFromUser.js";
+import { deleteRequest } from "../api/deleteRequest.js";
 
 function ProfilePage() {
   useEffect(() => {
@@ -22,10 +23,10 @@ function ProfilePage() {
   const [deleteHoverIndex, setDeleteHoverIndex] = useState(null);
 
   const [showConfirm, setShowConfirm] = useState(false);
-  const [indexToDelete, setIndexToDelete] = useState(null);
+  const [indexToDelete, setIndexToDelete] = useState();
 
   const [showEdit, setShowEdit] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedItem, setSelectedItem] = useState();
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
@@ -36,10 +37,21 @@ function ProfilePage() {
     currentPage * itemsPerPage
   );
 
-  const handleConfirmDelete = () => {
-    setItems((prev) => prev.filter((_, i) => i !== indexToDelete));
-    setShowConfirm(false);
-  };
+const handleConfirmDelete = async () => {
+  const itemToDelete = items[indexToDelete]; 
+  const id = itemToDelete.id;
+
+  setItems((prev) => prev.filter((_, i) => i !== indexToDelete));
+  setShowConfirm(false);
+
+  const res = await deleteRequest(id);
+
+  if (res.success) {
+    location.reload();
+  } else {
+    alert("Error deleting a post! Try Again!");
+  }
+};
 
   const handleSaveEdit = (updatedItem) => {
     setItems((prev) =>
@@ -72,7 +84,7 @@ function ProfilePage() {
             >
               <span
                 className={`absolute top-2 right-2 text-xs px-2 py-1 rounded-full ${
-                  item.status === "Complete"
+                  item.status === "complete"
                     ? "bg-green-200 text-green-700"
                     : "bg-red-200 text-red-700"
                 }`}

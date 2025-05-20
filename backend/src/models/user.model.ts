@@ -28,6 +28,15 @@ const getUser = async (id: number) => {
   return user;
 };
 
+const getUserLoggedIn = async (id: number) => {
+  const user = await db.user.findUnique({
+    where: {
+      id: id,
+    },
+  });
+  return user;
+};
+
 const getAllUser = async () => {
   const user = await db.user.findMany({});
   return user;
@@ -43,4 +52,4 @@ const getLoginUser = async (email: string, password: string) => {
     return user;
 };
 
-export {createUser,getUser,getAllUser,getLoginUser}
+export {createUser,getUser,getAllUser,getLoginUser, getUserLoggedIn}
