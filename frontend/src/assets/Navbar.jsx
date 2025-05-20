@@ -14,6 +14,7 @@ function Navbar() {
   }, []);
 
   const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
     setIsLoggedIn(false);
     console.log("User logged out");
   };
@@ -51,8 +52,7 @@ function Navbar() {
       ) : (
         <button
           onClick={() => {
-            handleLogout
-            localStorage.removeItem("isLoggedIn");
+            handleLogout;
           }}
           className="bg-[#89ACCE] text-white text-xl font-medium px-4 py-2 rounded-md hover:bg-[#7295b8] transition"
         >
