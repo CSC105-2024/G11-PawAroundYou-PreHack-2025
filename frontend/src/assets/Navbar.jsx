@@ -89,9 +89,11 @@ function Navbar() {
             onClick={() => setMenuOpen(false)}
             className="py-2 text-[#89ACCE] w-full hover:underline"
           >
+
             Profile
           </Link>
         </div>
+
       )}
     </header>
   );
