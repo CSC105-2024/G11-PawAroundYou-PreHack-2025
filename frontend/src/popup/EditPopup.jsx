@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { editRequest } from "../api/editRequest";
+import { getUser } from "../api/getUser";
 
 export default function EditPopup({ trigger, item, onCancel, onSave }) {
   const [title, setTitle] = useState("");
@@ -8,6 +9,15 @@ export default function EditPopup({ trigger, item, onCancel, onSave }) {
   const [locationDistrict, setDistrict] = useState("");
   const [contact, setContact] = useState("");
   const [status, setStatus] = useState("Incomplete");
+
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const getUserData = async () => {
+      const data = await getUser(item.userId);
+      setUser(() => data.data);
+    };
+    getUserData();
+  });
 
   useEffect(() => {
     if (item) {
@@ -29,16 +39,15 @@ export default function EditPopup({ trigger, item, onCancel, onSave }) {
         description: description,
         locationDistrict: locationDistrict,
         locationProvince: locationProvince,
-        status: status
+        status: status,
       })
     );
 
     const res = await editRequest(item.id, formData);
-    if(res.success){
+    if (res.success) {
       location.reload();
-    }
-    else{
-      alert("Failed to EDIT")
+    } else {
+      alert("Failed to EDIT");
     }
   };
 
@@ -119,11 +128,7 @@ export default function EditPopup({ trigger, item, onCancel, onSave }) {
           {/* Contact */}
           <div>
             <label className="font-semibold block mb-1">Contact</label>
-            <input
-              value={contact}
-              readOnly
-              className="w-full px-4 py-2 rounded shadow text-sm bg-gray-100 cursor-not-allowed text-gray-600"
-            />
+            <p className="text-black text-sm rounded-md mt-1 mx-4">{user?.tel}</p>
           </div>
         </div>
 
