@@ -11,13 +11,21 @@ export default function EditPopup({ trigger, item, onCancel, onSave }) {
   const [status, setStatus] = useState("Incomplete");
 
   const [user, setUser] = useState(null);
+
   useEffect(() => {
+    if (!item || !item.userId) return;
+
     const getUserData = async () => {
-      const data = await getUser(item.userId);
-      setUser(() => data.data);
+      try {
+        const data = await getUser(item.userId);
+        setUser(data.data);
+      } catch (err) {
+        console.error("Failed to fetch user:", err);
+      }
     };
+
     getUserData();
-  });
+  }, [item]);
 
   useEffect(() => {
     if (item) {
@@ -128,7 +136,9 @@ export default function EditPopup({ trigger, item, onCancel, onSave }) {
           {/* Contact */}
           <div>
             <label className="font-semibold block mb-1">Contact</label>
-            <p className="text-black text-sm rounded-md mt-1 mx-4">{user?.tel}</p>
+            <p className="text-black text-sm rounded-md mt-1 mx-4">
+              {user?.tel}
+            </p>
           </div>
         </div>
 
