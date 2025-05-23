@@ -4,6 +4,7 @@ import { getUser } from "./../api/getUser";
 export default function PostDetailPopup({ trigger, setTrigger, post }) {
   if (!trigger || !post) return null;
   const [user, setUser] = useState(null);
+
   useEffect(() => {
     const getUserData = async () => {
       const data = await getUser(post.userId);
@@ -23,10 +24,18 @@ export default function PostDetailPopup({ trigger, setTrigger, post }) {
         </button>
 
         <div className="flex justify-between">
-          <h1 className="font-bold text-4xl">{user?.fName}  {user?.sName}</h1>
+          <h1 className="font-bold text-4xl">
+            {user?.fName} {user?.sName}
+          </h1>
           <div className="flex items-center mr-4">
-            <span className="bg-red-400 text-white font-medium px-4 py-1 rounded-md">
-              Incomplete
+            <span
+              className={` font-medium px-4 py-1 rounded-md ${
+                post.status?.toLowerCase() === "complete"
+                  ? "bg-green-100 text-green-600"
+                  : "bg-red-100 text-red-600"
+              }`}
+            >
+              {post.status}
             </span>
           </div>
         </div>

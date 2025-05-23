@@ -4,16 +4,41 @@ import Navbar from "./../assets/Navbar";
 import CreateHelpPopup from "../popup/CreateHelpPopup.jsx";
 import { getAllRequest } from "../api/getAllRequest.js";
 import PostDetailPopup from "../popup/PostDetails.jsx";
+import { getUser } from "../api/getUser.js";
 
 const CommunityBoard = () => {
   const [data, setData] = useState([]);
+  const [userMap, setUserMap] = useState({});
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     const data = await getAllRequest();
+  //     setData(() => data.data);
+  //   };
+  //   getData();
+  // });
+
+
   useEffect(() => {
-    const getData = async () => {
-      const data = await getAllRequest();
-      setData(() => data.data);
+    const fetchUsers = async () => {
+      const requests = await getAllRequest();
+      const posts = requests.data;
+      setData(posts);
+
+      // get unique userIds
+      const userIds = [...new Set(posts.map((p) => p.userId))];
+
+      // fetch users in parallel
+      const userResponses = await Promise.all(userIds.map((id) => getUser(id)));
+      const map = {};
+      userResponses.forEach((res, i) => {
+        map[userIds[i]] = res.data;
+      });
+
+      setUserMap(map);
     };
-    getData();
-  });
+
+    fetchUsers();
+  }, []);
 
   const itemsPerPage = 9;
   const totalPages = Math.ceil(data.length / itemsPerPage);
@@ -79,6 +104,9 @@ const CommunityBoard = () => {
                 <p className="text-gray-600 text-sm leading-relaxed break-words">
                   {card.description}
                 </p>
+                <h2 className="font-semibold text-sm mt-4 mb-2 break-words text-[#89ACCE]">
+                  {userMap[card.userId]?.fName} {userMap[card.userId]?.sName}
+                </h2>
               </div>
             ))}
           </div>

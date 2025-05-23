@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { z } from "zod";
 import { createRequest } from "../api/createRequest";
 import { getUser } from "../api/getUser";
-import { getUserLoggedIn } from '../api/getUserLoggedIn';
+import { getUserLoggedIn } from "../api/getUserLoggedIn";
 
 const postSchema = z.object({
   title: z.string().min(1, "Title is required"),
@@ -16,14 +16,17 @@ export default function CreateHelpPopup({ trigger, setTrigger }) {
 
   useEffect(() => {
     const getUserData = async () => {
-      const res = await getUserLoggedIn();
-      setUser(() => res.data);
-      localStorage.setItem("userId", (res.data.data));
+      try {
+        const res = await getUserLoggedIn();
+        setUser(res.data);
+        localStorage.setItem("userId", res.data.data);
+      } catch (err) {
+        console.error("Error fetching logged in user:", err);
+      }
     };
+
     getUserData();
-    
-  });
-  
+  }, []);
 
   const [form, setForm] = useState({
     title: "",
