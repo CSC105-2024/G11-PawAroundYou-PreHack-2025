@@ -1,9 +1,9 @@
 
 ## :wrench: Ma Help Kan
 
-_This project focuses on social good and volunteering. We chose to create a community help board for people seeking assistance not only with houseworks but also mental problems. Because many people face problems they don’t fully understand, and it becomes even harder when there’s no one around to help.
+This project focuses on social good and volunteering. We chose to create a community help board for people seeking assistance not only with houseworks but also mental problems. Because many people face problems they don’t fully understand, and it becomes even harder when there’s no one around to help.
 
-Our website was designed to be like a traditional community bulletin board, similar to those found in villages or schools. Based on this concept, users can create, edit, and delete their requests, as well as view all requests posted by others._
+Our website was designed to be like a traditional community bulletin board, similar to those found in villages or schools. Based on this concept, users can create, edit, and delete their requests, as well as view all requests posted by others.
 
 ---
 
